@@ -1,0 +1,265 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Telecom Service FAQ
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1771994987431-source-1771995057834-target
+      source: '1771994987431'
+      sourceHandle: source
+      target: '1771995057834'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1771995057834-source-llm-target
+      source: '1771995057834'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 52
+      id: '1771994987431'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771995057834'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_config:
+          jinja2_variables:
+          - value_selector:
+            - '1771995057834'
+            - result
+            variable: result
+          - value_selector:
+            - sys
+            - query
+            variable: query
+        prompt_template:
+        - edition_type: jinja2
+          id: 2f39c8c4-56dd-4c24-bfb9-507df8dac91f
+          jinja2_text: "You are a customer support assistant for our telecom company.\r\
+            \n\r\nAnswer accurately based on knowledge base information.\r\nIf the\
+            \ information is not in the knowledge base, respond: \"I'm sorry, but\
+            \ that information is not available in our knowledge base. Please call\
+            \ 0120-116-116 for assistance.\"\r\n\r\nResponse rules:\r\n1. Use polite,\
+            \ professional language\r\n2. Cite the source of information\r\n3. Include\
+            \ specific numbers (fees, phone numbers, etc.)\r\n4. Provide next steps\
+            \ if the issue cannot be resolved\r\n\r\nHere is the history of the chat:\r\
+            \n{{ result }}"
+          role: system
+          text: 'You are a customer support assistant for our telecom company.
+
+
+            Answer accurately based on knowledge base information.
+
+            If the information is not in the knowledge base, respond: "I''m sorry,
+            but that information is not available in our knowledge base. Please call
+            0120-116-116 for assistance."
+
+
+            Response rules:
+
+            1. Use polite, professional language
+
+            2. Cite the source of information
+
+            3. Include specific numbers (fees, phone numbers, etc.)
+
+            4. Provide next steps if the issue cannot be resolved
+
+
+            Here is the context of the chat for you to follow:
+
+            {{#context#}}
+
+            '
+        selected: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 678.7969749639178
+        y: 282
+      positionAbsolute:
+        x: 678.7969749639178
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 980
+        y: 282
+      positionAbsolute:
+        x: 980
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - hIRLjrPWQszZs4Der0obd7mf8YEYK/96nM4+Hw8Dbvxd7SxvMdPSgpsRqa7qohF1
+        metadata_filtering_mode: disabled
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: cohere.rerank-v3-5:0
+            provider: langgenius/bedrock/bedrock
+          score_threshold: 0.5
+          top_k: 5
+        query_variable_selector:
+        - '1771994987431'
+        - sys.query
+        retrieval_mode: multiple
+        selected: true
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: '1771995057834'
+      position:
+        x: 376.19546244587684
+        y: 282
+      positionAbsolute:
+        x: 376.19546244587684
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 50.55984545358001
+      y: -41.1872671512229
+      zoom: 0.9548416039104164
+  rag_pipeline_variables: []

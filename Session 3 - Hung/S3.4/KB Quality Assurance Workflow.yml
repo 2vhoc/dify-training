@@ -1,0 +1,463 @@
+app:
+  description: Evaluates RAG retrieval quality and identifies improvement areas
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: KB Quality Assurance Workflow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1772080235445-source-1772080470412-target
+      source: '1772080235445'
+      sourceHandle: source
+      target: '1772080470412'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772080470412-source-1772080479163-target
+      source: '1772080470412'
+      sourceHandle: source
+      target: '1772080479163'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772080479163-source-1772080496828-target
+      source: '1772080479163'
+      sourceHandle: source
+      target: '1772080496828'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1772080496828-source-1772081174860-target
+      source: '1772080496828'
+      sourceHandle: source
+      target: '1772081174860'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772081174860-true-1772081281529-target
+      source: '1772081174860'
+      sourceHandle: 'true'
+      target: '1772081281529'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1772081174860-false-1772081299177-target
+      source: '1772081174860'
+      sourceHandle: 'false'
+      target: '1772081299177'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772081281529-source-1772081314929-target
+      source: '1772081281529'
+      sourceHandle: source
+      target: '1772081314929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1772081299177-source-1772081314929-target
+      source: '1772081299177'
+      sourceHandle: source
+      target: '1772081314929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - default: What is the monthly fee for fiber internet?
+          hint: ''
+          label: query
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: query
+      height: 88
+      id: '1772080235445'
+      position:
+        x: 78.34024604461354
+        y: 282
+      positionAbsolute:
+        x: 78.34024604461354
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - OBL0aOD0spUngnvXr00hc6pcT74pR8aTMEOfP95XM4ta+6dje8ex+x8BgQScFY2+
+        - iUjZq7OU5hONg8S8GKdcaQs7lYFIV47cSEg4j4Q4BIk/KVIBxWbXU/mMKdsBNadX
+        - ejD9J00AZQN7QNtYdlVMs+bF7MCAIz/txoRlYdiImZ1TobCX9h5o3WXuZ01l9VHL
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: cohere.rerank-v3-5:0
+            provider: langgenius/bedrock/bedrock
+          score_threshold: 0.3
+          top_k: 5
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: text-embedding-3-large
+              embedding_provider_name: langgenius/azure_openai/azure_openai
+              vector_weight: 0.7
+            weight_type: customized
+        query_variable_selector:
+        - '1772080235445'
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 146
+      id: '1772080470412'
+      position:
+        x: 380.1182744926265
+        y: 282
+      positionAbsolute:
+        x: 380.1182744926265
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772080470412'
+          - result
+        model:
+          completion_params: {}
+          mode: chat
+          name: o4-mini
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - edition_type: basic
+          id: 5339bee8-1ee6-4f65-b482-ef9e8534b226
+          role: system
+          text: "Evaluate the relevance of the retrieved context for the following\
+            \ question on a scale of 1-10.\n\nQuestion: {{#1772080235445.query#}}\n\
+            Retrieved Context: {{#context#}} \n\nScoring Criteria:\n- 10: Fully relevant.\
+            \ Contains information that directly answers the question\n- 7-9: Highly\
+            \ relevant. Contains key information\n- 4-6: Partially relevant. Some\
+            \ useful information\n- 1-3: Low relevance. Nearly unrelated to the question\n\
+            \nRespond in the following JSON format:\n{\"score\": number, \"reason\"\
+            : \"evaluation reason\", \"missing_info\": \"missing information\"}"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              missing_info:
+                type: string
+              reason:
+                type: string
+              scores:
+                type: number
+            required:
+            - score
+            - reason
+            - missing_info
+            type: object
+        structured_output_enabled: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772080479163'
+      position:
+        x: 681
+        y: 282
+      positionAbsolute:
+        x: 681
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\ndef main(evaluation: str) -> dict:\n    try:\n       \
+          \ data = json.loads(evaluation)\n        return {\n            \"score\"\
+          : data.get(\"score\"),\n            \"raw\": data\n        }\n    except:\n\
+          \        return {\"score\": 0, \"raw\": evaluation}"
+        code_language: python3
+        outputs:
+          raw:
+            children: null
+            type: object
+          score:
+            children: null
+            type: number
+        selected: true
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1772080479163'
+          - text
+          value_type: string
+          variable: evaluation
+      height: 52
+      id: '1772080496828'
+      position:
+        x: 984
+        y: 282
+      positionAbsolute:
+        x: 984
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: c91a9603-879b-4154-9167-d8e9f0cee648
+            numberVarType: constant
+            value: '7'
+            varType: number
+            variable_selector:
+            - '1772080496828'
+            - score
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 124
+      id: '1772081174860'
+      position:
+        x: 1286.1877476036439
+        y: 282
+      positionAbsolute:
+        x: 1286.1877476036439
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772080470412'
+          - result
+        model:
+          completion_params: {}
+          mode: chat
+          name: o4-mini
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - edition_type: basic
+          id: bb9d45fc-acd0-43cc-8700-058f66f26eaa
+          role: system
+          text: 'Based on the following context, answer the question.
+
+
+            Question: {{#1772080235445.query#}}
+
+            Context: {{#context#}}
+
+
+            Provide a helpful, accurate answer.'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772081281529'
+      position:
+        x: 1589
+        y: 282
+      positionAbsolute:
+        x: 1589
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: "⚠️ LOW CONFIDENCE RESULT\r\n\r\nQuery: {{ query }}\r\nRelevance\
+          \ Score: {{ score }}/10\r\nEvaluation: {{ raw }}\r\n\r\nSuggested Actions:\r\
+          \n- Review KB content for this topic\r\n- Add more relevant documents\r\n\
+          - Adjust chunking strategy"
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1772080235445'
+          - query
+          variable: query
+        - value_selector:
+          - '1772080496828'
+          - score
+          variable: score
+        - value_selector:
+          - '1772080496828'
+          - raw
+          variable: raw
+      height: 52
+      id: '1772081299177'
+      position:
+        x: 1589
+        y: 409
+      positionAbsolute:
+        x: 1589
+        y: 409
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772081281529'
+          - text
+          value_type: string
+          variable: output
+        - value_selector:
+          - '1772081299177'
+          - output
+          value_type: string
+          variable: output_1
+        selected: false
+        title: End
+        type: end
+      height: 114
+      id: '1772081314929'
+      position:
+        x: 1891
+        y: 282
+      positionAbsolute:
+        x: 1891
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -603.5744924668254
+      y: 163.9797032476117
+      zoom: 0.7071067811865479
+  rag_pipeline_variables: []

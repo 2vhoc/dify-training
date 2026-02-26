@@ -1,0 +1,248 @@
+app:
+  description: Customer support using multiple specialized knowledge bases
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Multi-Domain Support Assistant
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1772078685569-source-1772078690159-target
+      source: '1772078685569'
+      sourceHandle: source
+      target: '1772078690159'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772078690159-source-llm-target
+      source: '1772078690159'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 52
+      id: '1772078685569'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772078690159'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - edition_type: basic
+          id: f18e1be2-e7ff-4d37-b77d-c06d7fa1a8ac
+          role: system
+          text: 'You are a customer support assistant for our telecom company.
+
+
+
+            Answer accurately based on knowledge base information.
+
+            If the information is not in the knowledge base, respond: "I''m sorry,
+            but that information is not available in our knowledge base. Please call
+            0120-116-116 for assistance."
+
+
+
+            Response rules:
+
+            1. Use polite, professional language
+
+            2. Cite the source of information
+
+            3. Include specific numbers (fees, phone numbers, etc.)
+
+            4. Provide next steps if the issue cannot be resolved
+
+
+
+            Here is the history of the chat:
+
+            {{#context#}} '
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 679
+        y: 282
+      positionAbsolute:
+        x: 679
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 980
+        y: 282
+      positionAbsolute:
+        x: 980
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - ejD9J00AZQN7QNtYdlVMs+bF7MCAIz/txoRlYdiImZ1TobCX9h5o3WXuZ01l9VHL
+        - OBL0aOD0spUngnvXr00hc6pcT74pR8aTMEOfP95XM4ta+6dje8ex+x8BgQScFY2+
+        - iUjZq7OU5hONg8S8GKdcaQs7lYFIV47cSEg4j4Q4BIk/KVIBxWbXU/mMKdsBNadX
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: cohere.rerank-v3-5:0
+            provider: langgenius/bedrock/bedrock
+          score_threshold: 0.5
+          top_k: 5
+        query_variable_selector:
+        - '1772078685569'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 146
+      id: '1772078690159'
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -260.1006791766713
+      y: 95.99963557921097
+      zoom: 0.8122523963562358
+  rag_pipeline_variables: []
