@@ -1,0 +1,217 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Q&A with documents
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1772089577502-source-1772089588058-target
+      source: '1772089577502'
+      sourceHandle: source
+      target: '1772089588058'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772089588058-source-llm-target
+      source: '1772089588058'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 51
+      id: '1772089577502'
+      position:
+        x: 54
+        y: 273
+      positionAbsolute:
+        x: 54
+        y: 273
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: ed292cf9-1037-4536-acc1-03764abe3bd6
+          role: system
+          text: ''
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 980
+        y: 282
+      positionAbsolute:
+        x: 980
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        dataset_ids:
+        - pqxajUMbnUdSsdyEMxWtUg4HxA9mD2LVIz8Hv/WxFk0p2rPGE2ilKqc2YHbNnXIe
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: amazon.rerank-v1:0
+            provider: langgenius/bedrock/bedrock
+          top_k: 4
+        query_variable_selector:
+        - '1772089577502'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 89
+      id: '1772089588058'
+      position:
+        x: 361.5157165665104
+        y: 273
+      positionAbsolute:
+        x: 361.5157165665104
+        y: 273
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: 6.988224436812118
+      y: 39.528119164803
+      zoom: 0.6597539553864472
+  rag_pipeline_variables: []
