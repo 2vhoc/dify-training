@@ -1,0 +1,692 @@
+app:
+  description: Automatically classifies customer inquiries and generates initial response
+    drafts
+  icon: 4️⃣
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Inquiry Auto-Classification & Response Draft
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1772006895448-source-1772007266842-target
+      source: '1772006895448'
+      sourceHandle: source
+      target: '1772007266842'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1772007266842-1-1772007639703-target
+      source: '1772007266842'
+      sourceHandle: '1'
+      target: '1772007639703'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1772007266842-2-1772007642657-target
+      source: '1772007266842'
+      sourceHandle: '2'
+      target: '1772007642657'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1772007266842-1772007292883-1772007646401-target
+      source: '1772007266842'
+      sourceHandle: '1772007292883'
+      target: '1772007646401'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772007639703-source-1772008500356-target
+      source: '1772007639703'
+      sourceHandle: source
+      target: '1772008500356'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772007642657-source-1772009224254-target
+      source: '1772007642657'
+      sourceHandle: source
+      target: '1772009224254'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772007646401-source-1772009226962-target
+      source: '1772007646401'
+      sourceHandle: source
+      target: '1772009226962'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: inquiry_id
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: inquiry_id
+        - default: ''
+          hint: ''
+          label: customer_name
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: customer_name
+        - default: ''
+          hint: ''
+          label: inquiry_text
+          max_length: 500
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: inquiry_text
+        - default: ''
+          hint: ''
+          label: channel
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: channel
+        - default: ''
+          hint: ''
+          label: expected_category
+          max_length: 200
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: expected_category
+      height: 192
+      id: '1772006895448'
+      position:
+        x: 81
+        y: 282
+      positionAbsolute:
+        x: 81
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1'
+          name: '1. Technical Support
+
+            Keywords: internet, speed, slow, connection, Wi-Fi, router, equipment,
+            blinking, red light, disconnection, outage, signal, static, noise, VoIP,
+            phone dropping
+
+            Examples:
+
+            Connection issues
+
+            Equipment failures
+
+            Speed problems
+
+            Wi-Fi problems
+
+            VoIP quality issues
+
+            Response Focus: Troubleshooting steps, technical verification, repair
+            scheduling'
+        - id: '2'
+          name: '2. Billing/Payment
+
+            Keywords: bill, charge, payment, price, fee, invoice, refund, duplicate,
+            higher, increase, cost, subscription
+
+            Examples:
+
+            Bill amount questions
+
+            Payment method changes
+
+            Pricing plan inquiries
+
+            Refund requests
+
+            Billing errors
+
+            Response Focus: Billing explanation, correction process, payment options/'
+        - id: '1772007292883'
+          name: '3. Contract/Application
+
+            Keywords: apply, new, cancel, change, plan, contract, move, subscribe,
+            bundle, discount, upgrade, downgrade
+
+            Examples:
+
+            New service applications
+
+            Plan changes
+
+            Service cancellations
+
+            Moving/relocation
+
+            Bundle inquiries
+
+            Response Focus: Application guidance, plan options, process explanation'
+        instruction: 'Classify the following customer inquiry into one of these 3
+          categories:
+
+
+          Categories:
+
+          - Technical Support (connection issues, equipment failures, speed problems,
+          etc.)
+
+          - Billing/Payment (bill amounts, payment methods, pricing plans, etc.)
+
+          - Contract/Application (new applications, plan changes, cancellations, etc.)
+
+
+          Inquiry content:
+
+          {{#1772006895448.inquiry_text#}}
+
+
+          Respond in the following JSON format:
+
+          {"category": "category_name", "confidence": "high/medium/low", "keywords":
+          ["keyword1", "keyword2"]}'
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            presence_penalty: 0.2
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        query_variable_selector:
+        - '1772006895448'
+        - inquiry_text
+        selected: false
+        title: Question Classifier
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 608
+      id: '1772007266842'
+      position:
+        x: 397.1561894807139
+        y: 137.36460607115492
+      positionAbsolute:
+        x: 397.1561894807139
+        y: 137.36460607115492
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772007266842'
+          - class_name
+        default_value:
+        - key: text
+          type: string
+          value: Error on LLM1
+        error_strategy: default-value
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: afc48442-53a5-42c2-a95f-63ad3d14a2ea
+          role: system
+          text: 'You are a technical support representative for our telecom company.
+
+            Create an initial response draft for the following technical inquiry.
+
+
+            Customer Name: {{#1772006895448.customer_name#}}
+
+            Inquiry: {{#1772006895448.inquiry_text#}}
+
+
+            The response draft should include:
+
+            1. A polite greeting to the customer
+
+            2. Acknowledgment of the issue
+
+            3. Initial troubleshooting steps
+
+            {{#context#}}'
+        - id: a228a80c-d201-48ca-bff4-4c67f85d32f9
+          role: assistant
+          text: 'Output Template:
+
+            ==============================
+
+            Inquiry Response Ticket
+
+            ==============================
+
+            Customer Name: {{customer_name}}
+
+            Category: {{category}}
+
+            Confidence: {{confidence}}
+
+            Keywords: {{keywords}}
+
+            ==============================
+
+            [Response Draft]
+
+            {{response_draft}}/
+
+            ==============================
+
+            * This response was auto-generated as a draft. Please review before sending.'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: Technical Support Response
+        type: llm
+        vision:
+          enabled: false
+      height: 153
+      id: '1772007639703'
+      position:
+        x: 694.5701375670344
+        y: 137.36460607115492
+      positionAbsolute:
+        x: 694.5701375670344
+        y: 137.36460607115492
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772007266842'
+          - class_name
+        default_value:
+        - key: text
+          type: string
+          value: Error on LLM2
+        error_strategy: default-value
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 6ab1a7b6-c4fe-4424-8911-da6d7c40f4ce
+          role: system
+          text: 'You are a sales support representati/ve for our telecom company.
+
+            Create an initial response draft for the following contract/application
+            inquiry.
+
+
+            Customer Name: {{#1772006895448.customer_name#}}
+
+            Inquiry: {{#1772006895448.inquiry_text#}}
+
+
+            The response draft should include:
+
+            1. A polite greeting to the customer
+
+            2. Thank them for their interest or acknowledge their request
+
+            3. Relevant information about the service/plan
+
+            4. Next steps for the application or process
+
+            5. Contact information for sales team if needed
+
+            {{#context#}}'
+        - id: 259ea2fc-610a-4bc4-aeff-d9b3b5af4876
+          role: assistant
+          text: 'Output Template:
+
+            ==============================
+
+            Inquiry Response Ticket
+
+            ==============================
+
+            Customer Name: {{customer_name}}
+
+            Category: {{category}}
+
+            Confidence: {{confidence}}
+
+            Keywords: {{keywords}}
+
+            ==============================
+
+            [Response Draft]
+
+            {{response_draft}}/
+
+            ==============================
+
+            * This response was auto-generated as a draft. Please review before sending.'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: Billing/Payment Response
+        type: llm
+        vision:
+          enabled: false
+      height: 153
+      id: '1772007642657'
+      position:
+        x: 699.1561894807139
+        y: 384.6671096793666
+      positionAbsolute:
+        x: 699.1561894807139
+        y: 384.6671096793666
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772007266842'
+          - class_name
+        default_value:
+        - key: text
+          type: string
+          value: Error on LLM3
+        error_strategy: default-value
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 6e5f8c55-690d-4e2c-ad8f-c5bb4712897c
+          role: system
+          text: 'You are a sales support representative for our telecom company.
+
+            Create an initial response draft for the following contract/application
+            inquiry.
+
+
+            Customer Name: {{#1772006895448.customer_name#}}
+
+            Inquiry: {{#1772006895448.inquiry_text#}}
+
+
+            The response draft should include:
+
+            1. A polite greeting to the customer
+
+            2. Thank them for their interest or acknowledge their request
+
+            3. Relevant information about the service/plan
+
+            4. Next steps for the application or process
+
+            5. Contact information for sales team if needed
+
+            {{#context#}}'
+        - id: 9968153a-0e42-42d4-8c56-bfe07a9a1528
+          role: assistant
+          text: 'Output Template:
+
+            ==============================
+
+            Inquiry Response Ticket
+
+            ==============================
+
+            Customer Name: {{customer_name}}
+
+            Category: {{category}}
+
+            Confidence: {{confidence}}
+
+            Keywords: {{keywords}}
+
+            ==============================
+
+            [Response Draft]
+
+            {{response_draft}}/
+
+            ==============================
+
+            * This response was auto-generated as a draft. Please review before sending.'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: Contract/Application Response
+        type: llm
+        vision:
+          enabled: false
+      height: 153
+      id: '1772007646401'
+      position:
+        x: 699.1561894807139
+        y: 606.7060875298538
+      positionAbsolute:
+        x: 699.1561894807139
+        y: 606.7060875298538
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772007639703'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1772007639703'
+          - error_message
+          value_type: string
+          variable: error_message
+        selected: false
+        title: End
+        type: end
+      height: 114
+      id: '1772008500356'
+      position:
+        x: 988.1489623144594
+        y: 132.55250592682648
+      positionAbsolute:
+        x: 988.1489623144594
+        y: 132.55250592682648
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772007642657'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1772007642657'
+          - error_message
+          value_type: string
+          variable: error_message
+        selected: false
+        title: End 2
+        type: end
+      height: 114
+      id: '1772009224254'
+      position:
+        x: 1001.1561894807139
+        y: 384.6671096793666
+      positionAbsolute:
+        x: 1001.1561894807139
+        y: 384.6671096793666
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772007646401'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1772007646401'
+          - error_message
+          value_type: string
+          variable: error_message
+        selected: false
+        title: End 3
+        type: end
+      height: 114
+      id: '1772009226962'
+      position:
+        x: 1001.1561894807139
+        y: 606.7060875298538
+      positionAbsolute:
+        x: 1001.1561894807139
+        y: 606.7060875298538
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -206.9410591802491
+      y: 56.9758402691848
+      zoom: 0.8312378961427878
+  rag_pipeline_variables: []

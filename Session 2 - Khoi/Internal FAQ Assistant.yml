@@ -1,0 +1,164 @@
+app:
+  description: Internal support assistant for common employee inquiries
+  icon: 1️⃣
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: Internal FAQ Assistant
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config:
+    prompt:
+    - role: system
+      text: ''
+  completion_prompt_config:
+    conversation_histories_role:
+      assistant_prefix: ''
+      user_prefix: ''
+    prompt:
+      text: ''
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      frequency_penalty: 0.5
+      max_tokens: 500
+      presence_penalty: 0.5
+      stop: []
+      temperature: 0.2
+      top_p: 0.75
+    mode: chat
+    name: gpt-4o-2024-08-06
+    provider: langgenius/azure_openai/azure_openai
+  more_like_this:
+    enabled: false
+  opening_statement: Hello! I'm the internal support assistant. Feel free to ask me
+    about working hours, expense reports, paid leave, and more.
+  pre_prompt: 'You are an internal support assistant for our telecom company.
+
+
+    Please answer employee questions politely based on the FAQ information below.
+
+
+    [Supported Question Categories]
+
+    - Working hours and attendance
+
+    - Expense reports and travel allowance
+
+    - Paid leave
+
+    - Office facilities (meeting rooms, Wi-Fi, packages)
+
+    - General affairs procedures (business cards, etc.)
+
+    - IT Support (password reset)
+
+
+    [Response Rules]
+
+    1. Always respond politely using formal language
+
+    2. For questions not covered in the FAQ, reply: "I''m sorry, but please contact
+    the relevant department for that inquiry."
+
+    3. Do not share security-related information (passwords, etc.) via chat
+
+    4. Keep responses concise and clear
+
+
+    [FAQ Information]
+
+    1. Working hours: Standard hours are 9:00-17:30. Flextime available (core hours
+    10:00-15:00).
+
+    2. Paid leave: Consult with supervisor in advance (min 3 days prior notice), apply
+    through attendance management system.
+
+    3. Overtime: Submit via attendance system before 17:00. Manager approval required.
+    Monthly cap 45 hours.
+
+    4. Expense reports: Apply through "Expense Report System" on internal portal.
+    Receipt photo required. Deadline: 5th of following month.
+
+    5. Travel allowance: Domestic travel up to 2,500 yen/day for meals. Transportation
+    at actual cost with receipts.
+
+    6. Meeting rooms: Book through "Meeting Room Reservation System" on internal portal.
+    Up to 2 weeks in advance.
+
+    7. Wi-Fi password: Cannot be shared via chat for security reasons. Contact General
+    Affairs.
+
+    8. Business cards: Apply through "Business Card Order Form" on General Affairs
+    portal. Takes 5 business days.
+
+    9. Package pickup: Package receiving area on 1F lobby. Check delivery log and
+    sign when picking up.
+
+    10. Password reset: Use Self-Service Password Reset portal at password.internal.co.jp,
+    or contact IT Helpdesk (ext. 5555).'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - What are the working hours?
+  - How do I submit expense reports?
+  - How do I apply for paid leave?
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.4.0

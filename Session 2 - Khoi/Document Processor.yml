@@ -1,0 +1,797 @@
+app:
+  description: Extracts and structures information from business documents
+  icon: 5️⃣
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Document Processor
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1772012508106-source-1772013156534-target
+      selected: false
+      source: '1772012508106'
+      sourceHandle: source
+      target: '1772013156534'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: if-else
+      id: 1772013156534-source-1772013290119-target
+      selected: false
+      source: '1772013156534'
+      sourceHandle: source
+      target: '1772013290119'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772013290119-true-1772013392869-target
+      selected: false
+      source: '1772013290119'
+      sourceHandle: 'true'
+      target: '1772013392869'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772013290119-0e6f8f06-ec20-453d-b161-d1a1ab7fa524-1772013395314-target
+      selected: false
+      source: '1772013290119'
+      sourceHandle: 0e6f8f06-ec20-453d-b161-d1a1ab7fa524
+      target: '1772013395314'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772013290119-04fb0912-e709-44d5-91ea-0c4417994c3b-1772013397749-target
+      selected: false
+      source: '1772013290119'
+      sourceHandle: 04fb0912-e709-44d5-91ea-0c4417994c3b
+      target: '1772013397749'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772013290119-false-1772013399724-target
+      selected: false
+      source: '1772013290119'
+      sourceHandle: 'false'
+      target: '1772013399724'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772013392869-source-1772013854936-target
+      selected: false
+      source: '1772013392869'
+      sourceHandle: source
+      target: '1772013854936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772013395314-source-1772013854936-target
+      selected: false
+      source: '1772013395314'
+      sourceHandle: source
+      target: '1772013854936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772013397749-source-1772013854936-target
+      selected: false
+      source: '1772013397749'
+      sourceHandle: source
+      target: '1772013854936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772013399724-source-1772013854936-target
+      selected: false
+      source: '1772013399724'
+      sourceHandle: source
+      target: '1772013854936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: template-transform
+      id: 1772013854936-source-1772013899547-target
+      selected: false
+      source: '1772013854936'
+      sourceHandle: source
+      target: '1772013899547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1772013899547--1772014012686-target
+      source: '1772013899547'
+      sourceHandle: source
+      target: '1772014012686'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: Upload Document
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: file
+          variable: document_file
+        - default: ''
+          hint: ''
+          label: Document Type
+          max_length: 48
+          options:
+          - Invoice
+          - Contract
+          - Meeting Minutes
+          - Equipment List
+          placeholder: ''
+          required: true
+          type: select
+          variable: document_type
+      height: 114
+      id: '1772012508106'
+      position:
+        x: 89
+        y: 259
+      positionAbsolute:
+        x: 89
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1772012508106'
+        - document_file
+      height: 92
+      id: '1772013156534'
+      position:
+        x: 376
+        y: 259
+      positionAbsolute:
+        x: 376
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 13fc7b7e-6aa5-4937-9c27-65e7b31c8aad
+            value: Invoice
+            varType: string
+            variable_selector:
+            - '1772012508106'
+            - document_type
+          id: 'true'
+          logical_operator: and
+        - case_id: 0e6f8f06-ec20-453d-b161-d1a1ab7fa524
+          conditions:
+          - comparison_operator: contains
+            id: bfe29749-d0c2-44c6-9613-519d7bf7d81e
+            value: Contract
+            varType: string
+            variable_selector:
+            - '1772012508106'
+            - document_type
+          id: 0e6f8f06-ec20-453d-b161-d1a1ab7fa524
+          logical_operator: and
+        - case_id: 04fb0912-e709-44d5-91ea-0c4417994c3b
+          conditions:
+          - comparison_operator: contains
+            id: daf94144-4e31-4209-9a98-82bbfd158a19
+            value: Meeting Minutes
+            varType: string
+            variable_selector:
+            - '1772012508106'
+            - document_type
+          id: 04fb0912-e709-44d5-91ea-0c4417994c3b
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 220
+      id: '1772013290119'
+      position:
+        x: 678
+        y: 259
+      positionAbsolute:
+        x: 678
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772013156534'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 84576812-34a8-489a-b63d-ab8085a34522
+          role: system
+          text: "You are a document processing assistant. Extract the following information\
+            \ from the invoice text.\n\nDocument Content: {{#1772013156534.text#}}\n\
+            \nExtract and return in JSON format:\n{\n  \"invoice_number\": \"\",\n\
+            \  \"invoice_date\": \"\",\n  \"due_date\": \"\",\n  \"vendor_name\":\
+            \ \"\",\n  \"customer_name\": \"\",\n  \"line_items\": [{\"description\"\
+            : \"\", \"quantity\": 0, \"unit_price\": 0, \"amount\": 0}],\n  \"subtotal\"\
+            : 0,\n  \"tax_amount\": 0,\n  \"total_amount\": 0\n}\n{{#context#}}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              customer_name:
+                type: string
+              due_date:
+                type: string
+              invoice_date:
+                type: string
+              invoice_number:
+                type: string
+              line_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    amount:
+                      type: number
+                    description:
+                      type: string
+                    quantity:
+                      type: number
+                    unit_price:
+                      type: number
+                  required:
+                  - description
+                  - quantity
+                  - unit_price
+                  - amount
+                  type: object
+                type: array
+              subtotal:
+                type: number
+              tax_amount:
+                type: number
+              total_amount:
+                type: number
+              vendor_name:
+                type: string
+            required:
+            - invoice_number
+            - invoice_date
+            - due_date
+            - vendor_name
+            - customer_name
+            - line_items
+            - subtotal
+            - tax_amount
+            - total_amount
+            type: object
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1772013392869'
+      position:
+        x: 1031.05645935926
+        y: 85.77272717393876
+      positionAbsolute:
+        x: 1031.05645935926
+        y: 85.77272717393876
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772013156534'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 5e1803b7-f319-4452-89da-88232cffe6ce
+          role: system
+          text: "You are a legal document analyst. Extract key contract information.\n\
+            \nDocument Content: {{#1772013156534.text#}}\n\nExtract and return in\
+            \ JSON format:\n{\n  \"agreement_number\": \"\",\n  \"effective_date\"\
+            : \"\",\n  \"expiration_date\": \"\",\n  \"provider_name\": \"\",\n  \"\
+            customer_name\": \"\",\n  \"services\": [{\"name\": \"\", \"monthly_fee\"\
+            : 0}],\n  \"total_monthly_fee\": 0,\n  \"auto_renewal\": true/false\n\
+            }\n{{#context#}}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              agreement_number:
+                type: string
+              auto_renewal:
+                type: boolean
+              customer_name:
+                type: string
+              effective_date:
+                type: string
+              expiration_date:
+                type: string
+              provider_name:
+                type: string
+              services:
+                items:
+                  additionalProperties: false
+                  properties:
+                    monthly_fee:
+                      type: number
+                    name:
+                      type: string
+                  required:
+                  - name
+                  - monthly_fee
+                  type: object
+                type: array
+              total_monthly_fee:
+                type: number
+            required:
+            - agreement_number
+            - effective_date
+            - expiration_date
+            - provider_name
+            - customer_name
+            - services
+            - total_monthly_fee
+            - auto_renewal
+            type: object
+        structured_output_enabled: true
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1772013395314'
+      position:
+        x: 1040.1736842448424
+        y: 269.2995214645482
+      positionAbsolute:
+        x: 1040.1736842448424
+        y: 269.2995214645482
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772013156534'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 0e4195b2-a4ac-4920-a84c-b75ef0db3b2e
+          role: system
+          text: "You are a meeting documentation assistant. Extract structured information.\n\
+            \nDocument Content: {{#1772013156534.text#}}\n\nExtract and return in\
+            \ JSON format:\n{\n  \"meeting_title\": \"\",\n  \"date\": \"\",\n  \"\
+            attendees\": [{\"name\": \"\", \"department\": \"\"}],\n  \"agenda_items\"\
+            : [],\n  \"action_items\": [{\"action\": \"\", \"owner\": \"\", \"due_date\"\
+            : \"\"}],\n  \"next_meeting_date\": \"\"\n}\n{{#context#}}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              action_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    action:
+                      type: string
+                    due_date:
+                      type: string
+                    owner:
+                      type: string
+                  required:
+                  - action
+                  - owner
+                  - due_date
+                  type: object
+                type: array
+              agenda_items:
+                items:
+                  type: string
+                type: array
+              attendees:
+                items:
+                  additionalProperties: false
+                  properties:
+                    department:
+                      type: string
+                    name:
+                      type: string
+                  required:
+                  - name
+                  - department
+                  type: object
+                type: array
+              date:
+                type: string
+              meeting_title:
+                type: string
+              next_meeting_date:
+                type: string
+            required:
+            - meeting_title
+            - date
+            - attendees
+            - agenda_items
+            - action_items
+            - next_meeting_date
+            type: object
+        structured_output_enabled: true
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1772013397749'
+      position:
+        x: 1050.338203253245
+        y: 438.2387559382263
+      positionAbsolute:
+        x: 1050.338203253245
+        y: 438.2387559382263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772013156534'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 9820fcf4-fbcc-4de2-99dd-2cc71730be33
+          role: system
+          text: "You are an asset management assistant. Analyze equipment inventory.\n\
+            \nDocument Content: {{#1772013156534.text#}}\n\nExtract and return in\
+            \ JSON format:\n{\n  \"total_items\": 0,\n  \"total_value\": 0,\n  \"\
+            by_category\": {\"Network\": 0, \"Voice\": 0, \"Security\": 0, \"Power\"\
+            : 0},\n  \"expiring_warranties\": [{\"id\": \"\", \"name\": \"\", \"expiry_date\"\
+            : \"\"}],\n  \"items_by_location\": {}\n}\n{{#context#}}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              by_category:
+                additionalProperties: false
+                properties:
+                  Network:
+                    type: number
+                  Power:
+                    type: number
+                  Security:
+                    type: number
+                  Voice:
+                    type: number
+                required:
+                - Network
+                - Voice
+                - Security
+                - Power
+                type: object
+              expiring_warranties:
+                items:
+                  additionalProperties: false
+                  properties:
+                    expiry_date:
+                      type: string
+                    id:
+                      type: string
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  - expiry_date
+                  type: object
+                type: array
+              items_by_location:
+                additionalProperties: false
+                properties: {}
+                required: []
+                type: object
+              total_items:
+                type: number
+              total_value:
+                type: number
+            required:
+            - total_items
+            - total_value
+            - by_category
+            - expiring_warranties
+            - items_by_location
+            type: object
+        structured_output_enabled: true
+        title: LLM 4
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1772013399724'
+      position:
+        x: 1031.05645935926
+        y: 619.9421052517192
+      positionAbsolute:
+        x: 1031.05645935926
+        y: 619.9421052517192
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        output_type: string
+        selected: false
+        title: Variable Aggregator
+        type: variable-aggregator
+        variables:
+        - - '1772013392869'
+          - text
+        - - '1772013395314'
+          - text
+        - - '1772013397749'
+          - text
+        - - '1772013399724'
+          - text
+      height: 186
+      id: '1772013854936'
+      position:
+        x: 1466.6080906481168
+        y: 311.2985951051211
+      positionAbsolute:
+        x: 1466.6080906481168
+        y: 311.2985951051211
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: "==============================\r\nDocument Processing Result\r\n\
+          ==============================\r\nDocument Type: {{ document_type }}\r\n\
+          Processing Status: Complete\r\n\r\nExtracted Data:\r\n{{ output | tojson(indent=2)\
+          \ }}\r\n\r\n==============================\r\n* Processed by Doc Extractor\
+          \ Workflow"
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1772012508106'
+          - document_type
+          variable: document_type
+        - value_selector:
+          - '1772013854936'
+          - output
+          variable: output
+      height: 52
+      id: '1772013899547'
+      position:
+        x: 1784.98706429675
+        y: 311.2985951051211
+      positionAbsolute:
+        x: 1784.98706429675
+        y: 311.2985951051211
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772013899547'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: End
+        type: end
+      height: 88
+      id: '1772014012686'
+      position:
+        x: 2109.1080906481166
+        y: 311.2985951051211
+      positionAbsolute:
+        x: 2109.1080906481166
+        y: 311.2985951051211
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -601.9857576884851
+      y: 32.5333770980011
+      zoom: 0.7937005259840996
+  rag_pipeline_variables: []

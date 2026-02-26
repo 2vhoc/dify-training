@@ -1,0 +1,174 @@
+app:
+  description: Automatically generates standardized business documents from input
+    data
+  icon: 2️⃣
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: Business Document Generator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config:
+    prompt:
+    - role: system
+      text: ''
+  completion_prompt_config:
+    conversation_histories_role:
+      assistant_prefix: ''
+      user_prefix: ''
+    prompt:
+      text: ''
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: f5e46bb7-9c96-4d9f-9e32-e4a2de00acd7
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: document_type
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-2024-08-06
+    provider: langgenius/azure_openai/azure_openai
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: 'Based on the following information, create a standardized business
+    document in company format.
+
+
+    [Input Information]
+
+    - Document Type: {{document_type}}
+
+    - Subject: {{subject}}
+
+    - Details: {{details}}
+
+    - Responsible Person: {{responsible_person}}
+
+    - Date: {{date}}
+
+    - Additional Notes: {{additional_notes}}
+
+
+    [Document Format]
+
+    Please create the document with the following structure:
+
+
+    1. Document Header (type, date, responsible person)
+
+    2. Executive Summary (concise 1-2 sentences)
+
+    3. Detailed Description (including context and background)
+
+    4. Actions/Items (numbered list if applicable)
+
+    5. Conclusions/Next Steps
+
+    6. Remarks (if any)
+
+
+    Write in a professional, clear, and concise style.'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - select:
+      default: ''
+      label: Document Type
+      options:
+      - Maintenance Report
+      - Expense Summary
+      - Meeting Minutes
+      - Transaction Record
+      - Status Report
+      required: true
+      variable: document_type
+  - text-input:
+      default: ''
+      label: Subject/Title
+      max_length: 48
+      required: true
+      variable: subject
+  - paragraph:
+      default: ''
+      label: Details/Description
+      max_length: 500
+      required: false
+      variable: details
+  - text-input:
+      default: ''
+      label: Responsible Person
+      max_length: 48
+      required: false
+      variable: responsible_person
+  - text-input:
+      default: ''
+      label: Date
+      max_length: 48
+      required: false
+      variable: date
+  - paragraph:
+      default: ''
+      label: Additional Notes
+      max_length: 500
+      required: false
+      variable: additional_notes
+version: 0.4.0
