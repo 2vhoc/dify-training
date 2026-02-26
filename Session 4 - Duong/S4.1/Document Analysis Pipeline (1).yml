@@ -1,0 +1,633 @@
+app:
+  description: Analyzes project proposals against evaluation guidelines
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Document Analysis Pipeline
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1771987292476-source-1771987543001-target
+      selected: false
+      source: '1771987292476'
+      sourceHandle: source
+      target: '1771987543001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1771987543001-source-1771987597733-target
+      selected: false
+      source: '1771987543001'
+      sourceHandle: source
+      target: '1771987597733'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1771987597733-source-1771991473135-target
+      selected: false
+      source: '1771987597733'
+      sourceHandle: source
+      target: '1771991473135'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1771991473135-source-1771992600726-target
+      selected: false
+      source: '1771991473135'
+      sourceHandle: source
+      target: '1771992600726'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1771992600726-source-1771992678458-target
+      selected: false
+      source: '1771992600726'
+      sourceHandle: source
+      target: '1771992678458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1771992678458-source-1771993303199-target
+      selected: false
+      source: '1771992678458'
+      sourceHandle: source
+      target: '1771993303199'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - hint: ''
+          label: Proposal Type
+          options:
+          - New Project
+          - Enhancement
+          - Cost Reduction
+          - Process Improvement
+          placeholder: ''
+          required: true
+          type: select
+          variable: proposal_type
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: Upload Proposal Document
+          options: []
+          placeholder: ''
+          required: true
+          type: file
+          variable: document_file
+        - default: evaluation criteria scoring guideline
+          hint: ''
+          label: query
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: query
+      height: 140
+      id: '1771987292476'
+      position:
+        x: 124.25002831994163
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 124.25002831994163
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1771987292476'
+        - document_file
+      height: 92
+      id: '1771987543001'
+      position:
+        x: 447.085067016478
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 447.085067016478
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771987543001'
+          - text
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 17fc5641-837a-4046-ac31-7e5d944dfc68
+          role: system
+          text: 'Analyze the following project proposal and extract key information.
+
+            Document Content:
+
+            {{{#1771987543001.text#}}}
+
+             
+
+            Extract and return in JSON format:
+
+            {
+
+              "has_executive_summary": true/false,
+
+              "has_problem_data": true/false (look for specific numbers, percentages,
+            costs),
+
+              "has_quantified_kpis": true/false (look for measurable targets),
+
+              "has_timeline": true/false,
+
+              "has_budget": true/false,
+
+              "problem_statement": "brief summary of the problem",
+
+              "proposed_solution": "brief summary of the solution",
+
+              "extracted_kpis": ["list of KPIs found"],
+
+              "extracted_timeline": "timeline if found",
+
+              "budget_amount": "budget if found"
+
+            }
+
+
+            {{#context#}}'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              budget_amount:
+                description: Budget amount or financial figures mentioned in the document.
+                type: string
+              extracted_kpis:
+                description: List of KPIs identified in the document.
+                items:
+                  type: string
+                type: array
+              extracted_timeline:
+                description: Timeline or schedule extracted from the document, if
+                  available.
+                type: string
+              has_budget:
+                description: Indicates whether budget or financial allocation information
+                  is provided.
+                type: boolean
+              has_executive_summary:
+                description: Indicates whether the document contains an executive
+                  summary section.
+                type: boolean
+              has_problem_data:
+                description: True if the document includes specific numbers, percentages,
+                  costs, or other quantitative problem data.
+                type: boolean
+              has_quantified_kpis:
+                description: True if measurable KPIs or quantified targets are identified.
+                type: boolean
+              has_timeline:
+                description: Indicates whether a timeline or schedule is mentioned.
+                type: boolean
+              problem_statement:
+                description: Brief summary of the problem described in the document.
+                type: string
+              proposed_solution:
+                description: Brief summary of the proposed solution.
+                type: string
+            required:
+            - has_executive_summary
+            - has_problem_data
+            - has_quantified_kpis
+            - has_timeline
+            - has_budget
+            - problem_statement
+            - proposed_solution
+            - extracted_kpis
+            - extracted_timeline
+            - budget_amount
+            type: object
+        structured_output_enabled: true
+        title: LLM Field Extraction Node
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1771987597733'
+      position:
+        x: 755.0415855189948
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 755.0415855189948
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - CpHb3Yu3LIcmp72MUCfWyZHhBUOWQ3Xhg1AqvWB3vPJt8jWe80yKF1rZqB1aXFz9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: cohere.rerank-v3-5:0
+            provider: langgenius/bedrock/bedrock
+          score_threshold: 0.6
+          top_k: 5
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: bge-large:latest
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 1
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1771987292476'
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 52
+      id: '1771991473135'
+      position:
+        x: 1108.5231918351049
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 1108.5231918351049
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771991473135'
+          - result
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            presence_penalty: 0.2
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 0c18f27d-77c8-447e-9d88-3b5df1610672
+          role: system
+          text: 'Compare this project proposal against the evaluation guidelines.
+
+
+
+            Extracted Proposal Information:
+
+            {{#1771987597733.text#}}
+
+            Evaluation Guidelines:
+
+            {{#context#}}
+
+
+
+            Score each section (0-100) and provide analysis in JSON:
+
+            {
+
+              "section_scores": {
+
+                "executive_summary": 0,
+
+                "problem_analysis": 0,
+
+                "proposed_solution": 0,
+
+                "expected_outcomes": 0,
+
+                "budget_resources": 0
+
+              },
+
+              "overall_score": 0,
+
+              "strengths": ["list of strong points"],
+
+              "missing_elements": ["list of missing required elements"],
+
+              "improvement_suggestions": ["specific actionable suggestions"]
+
+            }/'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              improvement_suggestions:
+                description: Bullet-formatted actionable improvement suggestions.
+                  Each line must start with '• '.
+                type: string
+              missing_elements:
+                description: Bullet-formatted missing elements. Each line must start
+                  with '• '.
+                type: string
+              overall_score:
+                description: Overall proposal score (0-100).
+                type: number
+              section_scores:
+                additionalProperties: false
+                properties:
+                  budget_resources:
+                    description: Score for budget and resources section (0-100).
+                    type: number
+                  executive_summary:
+                    description: Score for executive summary section (0-100).
+                    type: number
+                  expected_outcomes:
+                    description: Score for expected outcomes section (0-100).
+                    type: number
+                  problem_analysis:
+                    description: Score for problem analysis section (0-100).
+                    type: number
+                  proposed_solution:
+                    description: Score for proposed solution section (0-100).
+                    type: number
+                required:
+                - executive_summary
+                - problem_analysis
+                - proposed_solution
+                - expected_outcomes
+                - budget_resources
+                type: object
+              strengths:
+                description: Bullet-formatted strengths. Each line must start with
+                  '• '.
+                type: string
+            required:
+            - section_scores
+            - overall_score
+            - strengths
+            - missing_elements
+            - improvement_suggestions
+            type: object
+        structured_output_enabled: true
+        title: LLM Analysis Node
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1771992600726'
+      position:
+        x: 1434.9985505858103
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 1434.9985505858103
+        y: 306.0017318725586
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: "==================================================\r\n        \
+          \   PROJECT PROPOSAL ANALYSIS REPORT\r\n==================================================\r\
+          \n\r\nProposal Type: {{ proposal_type }}\r\n\r\nOVERALL SCORE\r\n--------------------------------------------------\r\
+          \n{{ overall_score }} / 100\r\n\r\n\r\nSECTION SCORES\r\n--------------------------------------------------\r\
+          \n• Executive Summary   : {{executive_summary }} / 100\r\n• Problem Analysis\
+          \    : {{problem_analysis }} / 100\r\n• Proposed Solution   : {{proposed_solution\
+          \ }} / 100\r\n• Expected Outcomes   : {{expected_outcomes }} / 100\r\n•\
+          \ Budget & Resources  : {{budget_resources }} / 100\r\n\r\n\r\nSTRENGTHS\r\
+          \n--------------------------------------------------\r\n{{ strengths }}\r\
+          \n\r\nMISSING ELEMENTS\r\n--------------------------------------------------\r\
+          \n{{ missing_elements }}\r\n\r\n\r\nIMPROVEMENT SUGGESTIONS\r\n--------------------------------------------------\r\
+          \n{{ improvement_suggestions }}\r\n\r\n--------------------------------------------------\r\
+          \nAnalysis generated by Document Analysis Pipeline\r\n--------------------------------------------------"
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1771987292476'
+          - proposal_type
+          variable: proposal_type
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - overall_score
+          value_type: object
+          variable: overall_score
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - section_scores
+          - executive_summary
+          variable: executive_summary
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - section_scores
+          - problem_analysis
+          variable: problem_analysis
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - section_scores
+          - proposed_solution
+          variable: proposed_solution
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - section_scores
+          - expected_outcomes
+          variable: expected_outcomes
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - section_scores
+          - budget_resources
+          variable: budget_resources
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - strengths
+          variable: strengths
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - missing_elements
+          variable: missing_elements
+        - value_selector:
+          - '1771992600726'
+          - structured_output
+          - improvement_suggestions
+          variable: improvement_suggestions
+      height: 52
+      id: '1771992678458'
+      position:
+        x: 1740.1052708434884
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 1740.1052708434884
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1771992678458'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: Output
+        type: end
+      height: 88
+      id: '1771993303199'
+      position:
+        x: 2035.386403160037
+        y: 306.0017318725586
+      positionAbsolute:
+        x: 2035.386403160037
+        y: 306.0017318725586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -828.2352975337192
+      y: -14.251711653283621
+      zoom: 0.7578582832551991
+  rag_pipeline_variables: []
