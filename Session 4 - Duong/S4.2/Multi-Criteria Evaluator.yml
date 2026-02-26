@@ -1,0 +1,1187 @@
+app:
+  description: Evaluates submissions using parallel criteria analysis
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Multi-Criteria Evaluator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.1.2@fcf107badccaf57948634ad2c557d393c3894138d83f4eb3f959e9a1d3a86512
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1772006404999-source-1772006572031-target
+      selected: false
+      source: '1772006404999'
+      sourceHandle: source
+      target: '1772006572031'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772006572031-source-1772006940474-target
+      selected: false
+      source: '1772006572031'
+      sourceHandle: source
+      target: '1772006940474'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772006572031-source-1772006932941-target
+      selected: false
+      source: '1772006572031'
+      sourceHandle: source
+      target: '1772006932941'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772006572031-source-1772007109592-target
+      selected: false
+      source: '1772006572031'
+      sourceHandle: source
+      target: '1772007109592'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772006572031-source-1772007112207-target
+      selected: false
+      source: '1772006572031'
+      sourceHandle: source
+      target: '1772007112207'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1772007325350-source-1772009049815-target
+      selected: false
+      source: '1772007325350'
+      sourceHandle: source
+      target: '1772009049815'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772009049815-true-1772009337925-target
+      selected: false
+      source: '1772009049815'
+      sourceHandle: 'true'
+      target: '1772009337925'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772009049815-aa20939d-0fad-4174-a1fb-b8e4ada72b33-1772009340362-target
+      selected: false
+      source: '1772009049815'
+      sourceHandle: aa20939d-0fad-4174-a1fb-b8e4ada72b33
+      target: '1772009340362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772009049815-6586d398-6390-4438-a482-2241d0c59948-1772009344738-target
+      selected: false
+      source: '1772009049815'
+      sourceHandle: 6586d398-6390-4438-a482-2241d0c59948
+      target: '1772009344738'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772009049815-false-1772009348854-target
+      selected: false
+      source: '1772009049815'
+      sourceHandle: 'false'
+      target: '1772009348854'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772009337925-source-1772012226361-target
+      selected: false
+      source: '1772009337925'
+      sourceHandle: source
+      target: '1772012226361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772009340362-source-1772012226361-target
+      selected: false
+      source: '1772009340362'
+      sourceHandle: source
+      target: '1772012226361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772009344738-source-1772012226361-target
+      selected: false
+      source: '1772009344738'
+      sourceHandle: source
+      target: '1772012226361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772009348854-source-1772012226361-target
+      selected: false
+      source: '1772009348854'
+      sourceHandle: source
+      target: '1772012226361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1772012226361-source-1772012237404-target
+      selected: false
+      source: '1772012226361'
+      sourceHandle: source
+      target: '1772012237404'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772006940474-source-1772007325350-target
+      source: '1772006940474'
+      sourceHandle: source
+      target: '1772007325350'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772006932941-source-1772007325350-target
+      source: '1772006932941'
+      sourceHandle: source
+      target: '1772007325350'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772007109592-source-1772007325350-target
+      source: '1772007109592'
+      sourceHandle: source
+      target: '1772007325350'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772007112207-source-1772007325350-target
+      source: '1772007112207'
+      sourceHandle: source
+      target: '1772007325350'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: Submission Content
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: submission_text
+        - default: ''
+          hint: ''
+          label: Submitter Name
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: submitter_name
+        - hint: ''
+          label: Type
+          options:
+          - Project Proposal
+          - Budget Request
+          - Process Change
+          - New Initiative
+          placeholder: ''
+          required: true
+          type: select
+          variable: submission_type
+      height: 159
+      id: '1772006404999'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - role: system
+          text: 'Parse this submission and extract key elements for evaluation.
+
+             
+
+            Submission:{{#1772006404999.submission_text#}}
+
+             
+
+            Extract in JSON format:
+
+            {
+
+              "problem_statement": "extracted problem or empty string",
+
+              "solution_description": "extracted solution or empty string",
+
+              "timeline": "extracted timeline or empty string",
+
+              "budget": "extracted budget or empty string",
+
+              "kpis": "extracted KPIs or empty string",
+
+              "full_text": "original submission text"
+
+            }'
+        selected: false
+        title: 'Initial LLM Parser '
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772006572031'
+      position:
+        x: 377.5939512646403
+        y: 356.30673827425164
+      positionAbsolute:
+        x: 377.5939512646403
+        y: 356.30673827425164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:120b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 973601d5-b444-422f-86de-0228efc4deeb
+          role: system
+          text: 'Evaluate the FEASIBILITY of this submission.
+
+             
+
+            Submission:
+
+            {{#1772006572031.text#}}
+
+             
+
+            Assess: technical achievability, timeline realism, budget reasonableness,
+            resource availability, risk mitigation.
+
+             
+
+            Return JSON:
+
+            {
+
+              "dimension": "feasibility",
+
+              "score": 0-100,
+
+              "strengths": ["feasibility strengths"],
+
+              "concerns": ["feasibility concerns"],
+
+              "reasoning": "brief explanation"
+
+            }'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              concerns:
+                items:
+                  type: string
+                type: array
+              dimension:
+                enum:
+                - feasibility
+                type: string
+              reasoning:
+                type: string
+              score:
+                maximum: 100
+                minimum: 0
+                type: integer
+              strengths:
+                items:
+                  type: string
+                type: array
+            required:
+            - dimension
+            - score
+            - strengths
+            - concerns
+            - reasoning
+            type: object
+        structured_output_enabled: true
+        title: Feasibility Evaluation
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772006932941'
+      position:
+        x: 719.1263553502414
+        y: 365.4572288568851
+      positionAbsolute:
+        x: 719.1263553502414
+        y: 365.4572288568851
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 2d673ecb-3948-4bbc-b6e8-50319f1f35b1
+          role: system
+          text: 'Evaluate the COMPLETENESS of this submission.
+
+             
+
+            Submission:
+
+            {{#1772006572031.text#}}
+
+             
+
+            Check for presence of: problem statement, solution, timeline, budget,
+            KPIs.
+
+             
+
+            Return JSON:
+
+            {
+
+              "dimension": "completeness",
+
+              "score": 0-100,
+
+              "elements_found": ["list of found elements"],
+
+              "elements_missing": ["list of missing elements"],
+
+              "reasoning": "brief explanation"
+
+            }'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              dimension:
+                enum:
+                - completeness
+                type: string
+              elements_found:
+                items:
+                  type: string
+                type: array
+              elements_missing:
+                items:
+                  type: string
+                type: array
+              reasoning:
+                type: string
+              score:
+                maximum: 100
+                minimum: 0
+                type: integer
+            required:
+            - dimension
+            - score
+            - elements_found
+            - elements_missing
+            - reasoning
+            type: object
+        structured_output_enabled: true
+        title: Completeness Evaluation
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772006940474'
+      position:
+        x: 711.3594838545132
+        y: 212.25622512585778
+      positionAbsolute:
+        x: 711.3594838545132
+        y: 212.25622512585778
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:120b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: c90a79ac-4020-4cc9-a28a-93cfcc37f42f
+          role: system
+          text: 'Evaluate the IMPACT of this submission.
+
+             
+
+            Submission:
+
+            {{#1772006572031.text#}}
+
+             
+
+            Assess: quantified benefits, user/process scope, strategic alignment,
+            ROI clarity, scalability.
+
+             
+
+            Return JSON:
+
+            {
+
+              "dimension": "impact",
+
+              "score": 0-100,
+
+              "benefits": ["identified benefits"],
+
+              "gaps": ["impact gaps"],
+
+              "reasoning": "brief explanation"
+
+            }'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              benefits:
+                items:
+                  type: string
+                type: array
+              dimension:
+                enum:
+                - impact
+                type: string
+              gaps:
+                items:
+                  type: string
+                type: array
+              reasoning:
+                type: string
+              score:
+                maximum: 100
+                minimum: 0
+                type: integer
+            required:
+            - dimension
+            - score
+            - benefits
+            - gaps
+            - reasoning
+            type: object
+        structured_output_enabled: true
+        title: Impact Evaluation
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772007109592'
+      position:
+        x: 726.3575342133387
+        y: 486.76277727252034
+      positionAbsolute:
+        x: 726.3575342133387
+        y: 486.76277727252034
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 5524bd54-d588-48f0-9507-6db188a67b2d
+          role: system
+          text: 'Evaluate the QUALITY of this submission''s presentation.
+
+             
+
+            Submission:
+
+            {{#1772006572031.text#}}
+
+             
+
+            Assess: structure, clarity, supporting data, consistency, readability.
+
+             
+
+            Return JSON:
+
+            {
+
+              "dimension": "quality",
+
+              "score": 0-100,
+
+              "positives": ["quality positives"],
+
+              "improvements": ["quality improvements needed"],
+
+              "reasoning": "brief explanation"
+
+            }'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              dimension:
+                enum:
+                - quality
+                type: string
+              improvements:
+                items:
+                  type: string
+                type: array
+              positives:
+                items:
+                  type: string
+                type: array
+              reasoning:
+                type: string
+              score:
+                maximum: 100
+                minimum: 0
+                type: integer
+            required:
+            - dimension
+            - score
+            - positives
+            - improvements
+            - reasoning
+            type: object
+        structured_output_enabled: true
+        title: Quality Evaluation
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772007112207'
+      position:
+        x: 731.5941763612234
+        y: 617.5723757037298
+      positionAbsolute:
+        x: 731.5941763612234
+        y: 617.5723757037298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "from datetime import datetime\n\ndef main(\n    completeness_result:\
+          \ dict,\n    feasibility_result: dict,\n    impact_result: dict,\n    quality_result:\
+          \ dict\n) -> dict:\n\n    try:\n        c = completeness_result[\"score\"\
+          ]\n        f = feasibility_result[\"score\"]\n        i = impact_result[\"\
+          score\"]\n        q = quality_result[\"score\"]\n    except:\n        c\
+          \ = f = i = q = 0\n\n    weighted = (c * 0.30) + (f * 0.25) + (i * 0.25)\
+          \ + (q * 0.20)\n\n    if weighted >= 80:\n        decision = \"APPROVE\"\
+          \n    elif weighted >= 60:\n        decision = \"REVIEW\"\n    elif weighted\
+          \ >= 40:\n        decision = \"REVISE\"\n    else:\n        decision = \"\
+          REJECT\"\n\n    return {\n        \"completeness\": c,\n        \"feasibility\"\
+          : f,\n        \"impact\": i,\n        \"quality\": q,\n        \"weighted_score\"\
+          : round(weighted, 1),\n        \"decision\": decision,\n        \"today\"\
+          : datetime.now().strftime(\"%Y-%m-%d\")\n    }"
+        code_language: python3
+        outputs:
+          completeness:
+            children: null
+            type: number
+          decision:
+            children: null
+            type: string
+          feasibility:
+            children: null
+            type: number
+          impact:
+            children: null
+            type: number
+          quality:
+            children: null
+            type: number
+          today:
+            children: null
+            type: string
+          weighted_score:
+            children: null
+            type: number
+        retry_config:
+          max_retries: 3
+          retry_enabled: false
+          retry_interval: 1000
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1772007112207'
+          - structured_output
+          value_type: object
+          variable: quality_result
+        - value_selector:
+          - '1772007109592'
+          - structured_output
+          value_type: object
+          variable: impact_result
+        - value_selector:
+          - '1772006932941'
+          - structured_output
+          value_type: object
+          variable: feasibility_result
+        - value_selector:
+          - '1772006940474'
+          - structured_output
+          value_type: object
+          variable: completeness_result
+      height: 50
+      id: '1772007325350'
+      position:
+        x: 1336.0807236099422
+        y: 446.4000671419341
+      positionAbsolute:
+        x: 1336.0807236099422
+        y: 446.4000671419341
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: c0b99b7e-18c4-4b72-b626-9cf1183be31a
+            value: APPROVE
+            varType: string
+            variable_selector:
+            - '1772007325350'
+            - decision
+          id: 'true'
+          logical_operator: and
+        - case_id: aa20939d-0fad-4174-a1fb-b8e4ada72b33
+          conditions:
+          - comparison_operator: contains
+            id: 4a71589a-25f5-4cf8-8adc-3edc70e90f1f
+            value: REVIEW
+            varType: string
+            variable_selector:
+            - '1772007325350'
+            - decision
+          id: aa20939d-0fad-4174-a1fb-b8e4ada72b33
+          logical_operator: and
+        - case_id: 6586d398-6390-4438-a482-2241d0c59948
+          conditions:
+          - comparison_operator: contains
+            id: 29875628-0638-4922-b65f-c616cd0c5480
+            value: REVISE
+            varType: string
+            variable_selector:
+            - '1772007325350'
+            - decision
+          id: 6586d398-6390-4438-a482-2241d0c59948
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 218
+      id: '1772009049815'
+      position:
+        x: 1693.9270387309873
+        y: 391.5131334386884
+      positionAbsolute:
+        x: 1693.9270387309873
+        y: 391.5131334386884
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 7879a97e-919a-413f-b157-374822cb94bd
+          role: system
+          text: "Generate an approval summary for this submission.\n \nSubmitter:\
+            \ {{#1772006404999.submitter_name#}}\nType: {{#1772006404999.submission_type#}}\n\
+            Scores: {{#1772007325350.weighted_score#}}\nDetails:\n- Completeness:\
+            \ {{#1772006940474.structured_output.score#}}\n- Feasibility: {{#1772006932941.structured_output.score#}}\n\
+            - Impact: {{#1772007109592.structured_output.score#}}\n- Quality: {{#1772007112207.structured_output.score#}}\n\
+            Write a brief approval message highlighting strengths and any minor recommendations.\n\
+            Please provide: \n1. A summary of why the proposal was approved (highlighting\
+            \ the highest scoring dimensions). \n2. A brief statement on the expected\
+            \ impact. \n3. Next steps for immediate implementation."
+        selected: false
+        title: APPROVE
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772009337925'
+      position:
+        x: 2057.357151964057
+        y: 361.19718159752694
+      positionAbsolute:
+        x: 2057.357151964057
+        y: 361.19718159752694
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 4a1a41dc-23ea-4525-991e-90a4da6d4942
+          role: system
+          text: 'Generate a "Request for Review" summary. The tone should be constructive
+            and objective.
+
+
+            Submitter: {{#1772006404999.submitter_name#}}
+
+            Submission Type: {{#1772006404999.submission_type#}}
+
+            Overall Weighted Score:  {{#1772007325350.weighted_score#}}/100
+
+            Decision: FURTHER REVIEW REQUIRED
+
+
+            Evaluation Details:
+
+            - Completeness: {{#1772006940474.structured_output.score#}}
+
+            - Feasibility: {{#1772006932941.structured_output.score#}}
+
+            - Impact: {{#1772007109592.structured_output.score#}}
+
+            - Quality: {{#1772007112207.structured_output.score#}}
+
+
+            Please provide:
+
+            1. An acknowledgment of the submission''s potential.
+
+            2. Identification of specific areas (based on the lower scores) that require
+            human oversight or additional data.
+
+            3. A list of specific questions for the submitter to address in a follow-up
+            meeting.'
+        selected: false
+        title: REVIEW
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772009340362'
+      position:
+        x: 2062.980075373588
+        y: 452.5696870024093
+      positionAbsolute:
+        x: 2062.980075373588
+        y: 452.5696870024093
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:120b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 2ce79e91-1857-47e7-8d9b-750cc982d1fa
+          role: system
+          text: "Generate a detailed feedback report for a \"Revise and Resubmit\"\
+            \ decision. The tone should be encouraging but firm about the need for\
+            \ improvement.\nSubmitter: {{#1772006404999.submitter_name#}}\nSubmission\
+            \ Type: {{#1772006404999.submission_type#}}\nOverall Weighted Score: \
+            \ {{#1772007325350.weighted_score#}}/100\nDecision: REVISE AND RESUBMIT\n\
+            \nEvaluation Details:\n- Completeness: {{#1772006940474.structured_output.score#}}\n\
+            - Feasibility: {{#1772006932941.structured_output.score#}}\n- Impact:\
+            \ {{#1772007109592.structured_output.score#}}\n- Quality: {{#1772007112207.structured_output.score#}}\n\
+            \nPlease provide: \n1. A clear explanation of why the current submission\
+            \ did not meet the approval threshold. \n2. Actionable feedback based\
+            \ on the \"elements_missing\" and \"gaps\" identified in the evaluation\
+            \ branches. \n3. Guidance on how to strengthen the \"Feasibility\" and\
+            \ \"Impact\" sections for a second attempt."
+        selected: false
+        title: REVISE
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772009344738'
+      position:
+        x: 2060.168613668822
+        y: 534.102076440612
+      positionAbsolute:
+        x: 2060.168613668822
+        y: 534.102076440612
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-oss:20b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: eff36d53-ab12-4370-8058-124e63637aab
+          role: system
+          text: "Generate a formal rejection notice. The tone should be professional,\
+            \ direct, and polite.\nSubmitter: {{#1772006404999.submitter_name#}}\n\
+            Submission Type: {{#1772006404999.submission_type#}}\nOverall Weighted\
+            \ Score:  {{#1772007325350.weighted_score#}}/100\nDecision: FREJECTED\n\
+            \nEvaluation Details:\n- Summary of Scores:  {{#1772007325350.weighted_score#}}\
+            \ {{#1772007325350.decision#}} \nPlease provide: \n1. A formal statement\
+            \ that the proposal will not be moving forward at this time. \n2. A high-level\
+            \ summary of the critical gaps (e.g., lack of strategic alignment, feasibility\
+            \ concerns, or incomplete data). \n3. A standard closing thanking the\
+            \ submitter for their effort."
+        selected: false
+        title: 'REJECT '
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1772009348854'
+      position:
+        x: 2067.1972679307364
+        y: 617.5723757037298
+      positionAbsolute:
+        x: 2067.1972679307364
+        y: 617.5723757037298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        selected: false
+        template: "==========================================\r\nSUBMISSION EVALUATION\
+          \ REPORT\r\n==========================================\r\nSubmitter: {{\
+          \ submitter_name }}\r\nType: {{ submission_type }}\r\nDate:  {{ today }}\r\
+          \n\r\nDECISION: {{ decision }}\r\nWEIGHTED SCORE: {{ weighted_score }}/100\r\
+          \n\r\nDIMENSION SCORES:\r\n- Completeness (30%): {{ completeness }}/100\r\
+          \n- Feasibility (25%): {{ feasibility }}/100\r\n- Impact (25%): {{ impact\
+          \ }}/100\r\n- Quality (20%):{{ quality }}/100\r\n\r\nDETAILED FEEDBACK:\r\
+          \n{% if text %}\r\n{{ text }}\r\n{% endif %}\r\n\r\n{% if text_1 %}\r\n\
+          {{ text_1 }}\r\n{% endif %}\r\n\r\n{% if text_2 %}\r\n{{ text_2 }}\r\n{%\
+          \ endif %}\r\n\r\n{% if text_3 %}\r\n{{ text_3 }}\r\n{% endif %}\r\n=========================================="
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1772006404999'
+          - submitter_name
+          variable: submitter_name
+        - value_selector:
+          - '1772006404999'
+          - submission_type
+          variable: submission_type
+        - value_selector:
+          - '1772007325350'
+          - decision
+          variable: decision
+        - value_selector:
+          - '1772007325350'
+          - weighted_score
+          variable: weighted_score
+        - value_selector:
+          - '1772006940474'
+          - structured_output
+          - score
+          variable: score
+        - value_selector:
+          - '1772007325350'
+          - today
+          variable: today
+        - value_selector:
+          - '1772007325350'
+          - completeness
+          variable: completeness
+        - value_selector:
+          - '1772007325350'
+          - feasibility
+          variable: feasibility
+        - value_selector:
+          - '1772007325350'
+          - impact
+          variable: impact
+        - value_selector:
+          - '1772007325350'
+          - quality
+          variable: quality
+        - value_selector:
+          - '1772009337925'
+          - text
+          variable: text
+        - value_selector:
+          - '1772009340362'
+          - text
+          variable: text_1
+        - value_selector:
+          - '1772009344738'
+          - text
+          variable: text_2
+        - value_selector:
+          - '1772009348854'
+          - text
+          variable: text_3
+      height: 50
+      id: '1772012226361'
+      position:
+        x: 2479.66550736717
+        y: 456.5523812070916
+      positionAbsolute:
+        x: 2479.66550736717
+        y: 456.5523812070916
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        outputs:
+        - value_selector:
+          - '1772012226361'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: Output
+        type: end
+      height: 87
+      id: '1772012237404'
+      position:
+        x: 2833.799636848969
+        y: 460.1294936260997
+      positionAbsolute:
+        x: 2833.799636848969
+        y: 460.1294936260997
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: -488.61894041911796
+      y: 104.10445091733271
+      zoom: 0.515052339796536
+  rag_pipeline_variables: []
