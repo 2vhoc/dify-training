@@ -9,10 +9,10 @@ dependencies:
 - current_identifier: null
   type: marketplace
   value:
-    marketplace_plugin_unique_identifier: langgenius/ollama:0.1.2@fcf107badccaf57948634ad2c557d393c3894138d83f4eb3f959e9a1d3a86512
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
     version: null
 kind: app
-version: 0.6.0
+version: 0.4.0
 workflow:
   conversation_variables: []
   environment_variables: []
@@ -32,14 +32,10 @@ workflow:
       - remote_url
       enabled: false
       fileUploadConfig:
-        attachment_image_file_size_limit: 2
         audio_file_size_limit: 50
         batch_count_limit: 5
         file_size_limit: 15
-        file_upload_limit: 20
-        image_file_batch_limit: 10
-        image_file_size_limit: 10
-        single_chunk_attachment_limit: 10
+        image_file_size_limit: 5
         video_file_size_limit: 100
         workflow_file_upload_limit: 10
       image:
@@ -334,7 +330,7 @@ workflow:
           required: true
           type: select
           variable: submission_type
-      height: 159
+      height: 139
       id: '1772006404999'
       position:
         x: 80
@@ -346,7 +342,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 242
+      width: 241
     - data:
         context:
           enabled: false
@@ -355,8 +351,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: qwen3:8b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: b1387dc6-a538-4856-ac7d-e789cf1f721a
           role: system
@@ -390,7 +386,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772006572031'
       position:
         x: 377.5939512646403
@@ -398,7 +394,7 @@ workflow:
       positionAbsolute:
         x: 377.5939512646403
         y: 356.30673827425164
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -411,8 +407,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:120b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 973601d5-b444-422f-86de-0228efc4deeb
           role: system
@@ -481,7 +477,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772006932941'
       position:
         x: 719.1263553502414
@@ -502,8 +498,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:20b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 2d673ecb-3948-4bbc-b6e8-50319f1f35b1
           role: system
@@ -572,7 +568,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772006940474'
       position:
         x: 709.3594837810647
@@ -593,8 +589,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:120b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: c90a79ac-4020-4cc9-a28a-93cfcc37f42f
           role: system
@@ -663,7 +659,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772007109592'
       position:
         x: 726.3575342133387
@@ -684,8 +680,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:20b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 5524bd54-d588-48f0-9507-6db188a67b2d
           role: system
@@ -753,7 +749,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772007112207'
       position:
         x: 731.5941763612234
@@ -816,7 +812,7 @@ workflow:
           - output
           value_type: object
           variable: all_scores
-      height: 50
+      height: 51
       id: '1772007325350'
       position:
         x: 1336.0807236099422
@@ -867,7 +863,7 @@ workflow:
         selected: false
         title: IF/ELSE
         type: if-else
-      height: 218
+      height: 219
       id: '1772009049815'
       position:
         x: 1693.9270387309873
@@ -888,8 +884,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:20b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 7879a97e-919a-413f-b157-374822cb94bd
           role: system
@@ -907,7 +903,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772009337925'
       position:
         x: 2057.357151964057
@@ -928,8 +924,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:20b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 4a1a41dc-23ea-4525-991e-90a4da6d4942
           role: system
@@ -971,7 +967,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772009340362'
       position:
         x: 2062.980075373588
@@ -992,8 +988,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:120b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: 2ce79e91-1857-47e7-8d9b-750cc982d1fa
           role: system
@@ -1015,7 +1011,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772009344738'
       position:
         x: 2060.168613668822
@@ -1036,8 +1032,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-oss:20b
-          provider: langgenius/ollama/ollama
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
         prompt_template:
         - id: eff36d53-ab12-4370-8058-124e63637aab
           role: system
@@ -1056,7 +1052,7 @@ workflow:
         type: llm
         vision:
           enabled: false
-      height: 92
+      height: 87
       id: '1772009348854'
       position:
         x: 2067.1972679307364
@@ -1064,7 +1060,7 @@ workflow:
       positionAbsolute:
         x: 2067.1972679307364
         y: 617.5723757037298
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1141,7 +1137,7 @@ workflow:
           - '1772009348854'
           - text
           variable: text_3
-      height: 50
+      height: 51
       id: '1772012226361'
       position:
         x: 2541.401640323495
@@ -1191,7 +1187,7 @@ workflow:
           - structured_output
         - - '1772006940474'
           - structured_output
-      height: 185
+      height: 186
       id: '1772158923779'
       position:
         x: 1048.045527938563
@@ -1205,7 +1201,7 @@ workflow:
       type: custom
       width: 241
     viewport:
-      x: -26.5331498316516
-      y: 66.60302210277126
-      zoom: 0.5342622103788239
+      x: -1485.071773945189
+      y: -60.08050355843801
+      zoom: 0.613706122199235
   rag_pipeline_variables: []
