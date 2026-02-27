@@ -1,0 +1,1304 @@
+app:
+  description: Analyzes publicity effectiveness by region
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Publicity Analyzer
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1772075438211-source-1772075548948-target
+      selected: false
+      source: '1772075438211'
+      sourceHandle: source
+      target: '1772075548948'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1772075438211-source-1772075606555-target
+      source: '1772075438211'
+      sourceHandle: source
+      target: '1772075606555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1772075438211-source-1772075615331-target
+      source: '1772075438211'
+      sourceHandle: source
+      target: '1772075615331'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1772075548948-source-1772075632466-target
+      source: '1772075548948'
+      sourceHandle: source
+      target: '1772075632466'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1772075606555-source-1772075654983-target
+      source: '1772075606555'
+      sourceHandle: source
+      target: '1772075654983'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1772075615331-source-1772075690866-target
+      source: '1772075615331'
+      sourceHandle: source
+      target: '1772075690866'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772075654983-source-1772075788460-target
+      source: '1772075654983'
+      sourceHandle: source
+      target: '1772075788460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772075632466-source-1772075788460-target
+      source: '1772075632466'
+      sourceHandle: source
+      target: '1772075788460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1772075690866-source-1772075788460-target
+      source: '1772075690866'
+      sourceHandle: source
+      target: '1772075788460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: knowledge-retrieval
+      id: 1772075788460-source-1772075818306-target
+      source: '1772075788460'
+      sourceHandle: source
+      target: '1772075818306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772075818306-source-1772076835547-target
+      source: '1772075818306'
+      sourceHandle: source
+      target: '1772076835547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772076835547-source-1772076896678-target
+      source: '1772076835547'
+      sourceHandle: source
+      target: '1772076896678'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1772076896678-source-1772077399271-target
+      source: '1772076896678'
+      sourceHandle: source
+      target: '1772077399271'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772077399271-source-1772077679081-target
+      source: '1772077399271'
+      sourceHandle: source
+      target: '1772077679081'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772077679081-source-1772077656652-target
+      source: '1772077679081'
+      sourceHandle: source
+      target: '1772077656652'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1772075438211-source-1772077722316-target
+      source: '1772075438211'
+      sourceHandle: source
+      target: '1772077722316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1772077722316-source-1772077679081-target
+      selected: false
+      source: '1772077722316'
+      sourceHandle: source
+      target: '1772077679081'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: press_releases
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: press_releases
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: media_coverage
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: media_coverage
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: social_mentions
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: social_mentions
+        - default: ''
+          hint: ''
+          label: analysis_period
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: analysis_period
+      height: 166
+      id: '1772075438211'
+      position:
+        x: 0
+        y: 155
+      positionAbsolute:
+        x: 0
+        y: 155
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1772075438211'
+        - press_releases
+      height: 92
+      id: '1772075548948'
+      position:
+        x: 362
+        y: 1
+      positionAbsolute:
+        x: 362
+        y: 1
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Doc Extractor 2
+        type: document-extractor
+        variable_selector:
+        - '1772075438211'
+        - media_coverage
+      height: 92
+      id: '1772075606555'
+      position:
+        x: 362
+        y: 175
+      positionAbsolute:
+        x: 362
+        y: 175
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Doc Extractor 3
+        type: document-extractor
+        variable_selector:
+        - '1772075438211'
+        - social_mentions
+      height: 92
+      id: '1772075615331'
+      position:
+        x: 362
+        y: 349
+      positionAbsolute:
+        x: 362
+        y: 349
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772075548948'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 36bfae85-7aca-45c8-a9a3-0f51c8de62ac
+          role: system
+          text: "Analyze the press releases:\n{{#context#}}\n \nAnalyze the press\
+            \ releases and return STRUCTURED JSON with EXACT fields:\n\n{\n  \"regions_name\"\
+            : \"comma-separated region names\",\n  \"total_press\": number,\n  \"\
+            region_breakdown\": \"short human-readable summary\",\n  \"by_region\"\
+            : { \"region\": number },\n  \"by_topic\": { \"topic\": number },\n  \"\
+            total_reach\": number\n}\n\nRules:\n- regions_name MUST be a single string\n\
+            - Do NOT omit any field\n- Do NOT add extra fields\n- Output JSON only\n\
+            \nReturn JSON with:\n- total_count\n- by_region breakdown\n- by_topic\
+            \ breakdown\n- total_reach"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              region_breakdown:
+                type: string
+              regions_name:
+                type: string
+              total_press:
+                type: number
+            required:
+            - regions_name
+            - total_press
+            - region_breakdown
+            type: object
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772075632466'
+      position:
+        x: 704
+        y: 0
+      positionAbsolute:
+        x: 704
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772075606555'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: eeff4e80-b5ec-421b-b05b-b641f9186df1
+          role: system
+          text: 'Analyze the media coverage:
+
+            {{#context#}}
+
+            Return ONLY valid JSON. No explanation text.
+
+            Return a total media count
+
+            Return JSON with:
+
+            - pickup_rate
+
+            - sentiment_breakdown
+
+            - message_retention_stats
+
+            - by_media_type'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              by_media_type:
+                additionalProperties: false
+                properties:
+                  National:
+                    type: number
+                  Newspaper:
+                    type: number
+                  TV:
+                    type: number
+                  Web:
+                    type: number
+                type: object
+              message_retention_stats:
+                additionalProperties: false
+                properties:
+                  full:
+                    type: number
+                  none:
+                    type: number
+                  partial:
+                    type: number
+                required:
+                - full
+                - partial
+                - none
+                type: object
+              pickup_rate:
+                description: Percentage of press releases picked up by media
+                type: number
+              sentiment_breakdown:
+                additionalProperties: false
+                properties:
+                  Negative:
+                    type: number
+                  Neutral:
+                    type: number
+                  Positive:
+                    type: number
+                  Very Negative:
+                    type: number
+                  Very Positive:
+                    type: number
+                required:
+                - Positive
+                - Neutral
+                type: object
+              total_media:
+                type: number
+            required:
+            - pickup_rate
+            - sentiment_breakdown
+            - message_retention_stats
+            - by_media_type
+            - total_media
+            type: object
+        structured_output_enabled: true
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772075654983'
+      position:
+        x: 704
+        y: 174
+      positionAbsolute:
+        x: 704
+        y: 174
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772075615331'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: db43de21-e719-478a-a11d-be70f0d7b8e5
+          role: system
+          text: 'Analyze social media mentions:
+
+            {{#context#}}
+
+
+            Return top_perfomers
+
+            Return JSON with:
+
+            - total_engagement
+
+            - sentiment_distribution
+
+            - top_performing_posts
+
+            - engagement_by_platform'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              avg_sentiment_score:
+                type: number
+              engagement_by_platform:
+                additionalProperties:
+                  type: number
+                type: object
+              sentiment_distribution:
+                additionalProperties: false
+                properties:
+                  Negative:
+                    type: number
+                  Neutral:
+                    type: number
+                  Positive:
+                    type: number
+                  Very Positive:
+                    type: number
+                required:
+                - Positive
+                - Neutral
+                type: object
+              top_performer:
+                type: string
+              top_performing_posts:
+                items:
+                  additionalProperties: false
+                  properties:
+                    engagement:
+                      type: number
+                    platform:
+                      type: string
+                    pr_id:
+                      type: string
+                  required:
+                  - pr_id
+                  - platform
+                  - engagement
+                  type: object
+                type: array
+              total_engagement:
+                type: number
+            required:
+            - total_engagement
+            - sentiment_distribution
+            - top_performing_posts
+            - engagement_by_platform
+            - top_performer
+            - avg_sentiment_score
+            type: object
+        structured_output_enabled: true
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772075690866'
+      position:
+        x: 704
+        y: 348
+      positionAbsolute:
+        x: 704
+        y: 348
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        output_type: string
+        selected: false
+        title: Variable Aggregator
+        type: variable-aggregator
+        variables:
+        - - '1772075632466'
+          - text
+        - - '1772075654983'
+          - text
+        - - '1772075690866'
+          - text
+      height: 160
+      id: '1772075788460'
+      position:
+        x: 1066
+        y: 141
+      positionAbsolute:
+        x: 1066
+        y: 141
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - cRpNRUeUp1V+KHUhprz+Pstc4zlyk62XeCfPTSAes6gLCqUdRXjZ46gykkeIpjt2
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          score_threshold: null
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1772075632466'
+        - structured_output
+        - regions_name
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: '1772075818306'
+      position:
+        x: 1408
+        y: 195
+      positionAbsolute:
+        x: 1408
+        y: 195
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772075818306'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 227af987-4fc4-4578-be23-874809994f24
+          role: system
+          text: 'Actual performance:
+
+            {{#1772075788460.output#}}
+
+
+            Regional strategy guidelines:
+
+            {{#context#}}
+
+
+            Compare results.
+
+            Identify gaps and opportunities per region.'
+        selected: false
+        title: LLM 4
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772076835547'
+      position:
+        x: 1750
+        y: 174
+      positionAbsolute:
+        x: 1750
+        y: 174
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(coverage_data, social_data=None) -> dict:\n    import json\n\
+          \    from collections import Counter\n\n    # ---------- SAFE PARSE ----------\n\
+          \    def safe_json_load(x):\n        if isinstance(x, str):\n          \
+          \  try:\n                return json.loads(x)\n            except Exception:\n\
+          \                raise ValueError(\"Input is string but not valid JSON\"\
+          )\n        return x\n\n    coverage = safe_json_load(coverage_data)\n  \
+          \  social = safe_json_load(social_data) if social_data is not None else\
+          \ None\n\n    # ---------- HELPERS FOR FLEXIBLE SCHEMAS ----------\n   \
+          \ def metrics_from_coverage_summary(summary: dict):\n        # pickup_rate\n\
+          \        if isinstance(summary.get(\"pickup_rate\"), (int, float)):\n  \
+          \          pickup_rate_val = float(summary[\"pickup_rate\"])\n        else:\n\
+          \            mrs = summary.get(\"message_retention_stats\", {}) or {}\n\
+          \            total = (mrs.get(\"full\", 0) or 0) + (mrs.get(\"partial\"\
+          , 0) or 0) + (mrs.get(\"none\", 0) or 0)\n            if total:\n      \
+          \          retained = (mrs.get(\"full\", 0) or 0) + (mrs.get(\"partial\"\
+          , 0) or 0)\n                pickup_rate_val = retained / total * 100\n \
+          \           else:\n                pickup_rate_val = 0.0\n\n        # avg_sentiment_score\
+          \ 5..1\n        sentiment_map = {\n            \"Very Positive\": 5,\n \
+          \           \"Positive\": 4,\n            \"Neutral\": 3,\n            \"\
+          Negative\": 2,\n            \"Very Negative\": 1\n        }\n        sb\
+          \ = summary.get(\"sentiment_breakdown\", {}) or {}\n        total_sent =\
+          \ (\n            (sb.get(\"Very Positive\", 0) or 0) +\n            (sb.get(\"\
+          Positive\", 0) or 0) +\n            (sb.get(\"Neutral\", 0) or 0) +\n  \
+          \          (sb.get(\"Negative\", 0) or 0) +\n            (sb.get(\"Very\
+          \ Negative\", 0) or 0)\n        )\n        if total_sent:\n            weighted\
+          \ = (\n                (sb.get(\"Very Positive\", 0) or 0) * 5 +\n     \
+          \           (sb.get(\"Positive\", 0) or 0) * 4 +\n                (sb.get(\"\
+          Neutral\", 0) or 0) * 3 +\n                (sb.get(\"Negative\", 0) or 0)\
+          \ * 2 +\n                (sb.get(\"Very Negative\", 0) or 0) * 1\n     \
+          \       )\n            avg_sentiment = weighted / total_sent\n        else:\n\
+          \            avg_sentiment = 0.0\n\n        # message_retention_rate 100/50/0\n\
+          \        mrs = summary.get(\"message_retention_stats\", {}) or {}\n    \
+          \    total_mr = (mrs.get(\"full\", 0) or 0) + (mrs.get(\"partial\", 0) or\
+          \ 0) + (mrs.get(\"none\", 0) or 0)\n        if total_mr:\n            message_retention\
+          \ = (\n                (mrs.get(\"full\", 0) or 0) * 100 +\n           \
+          \     (mrs.get(\"partial\", 0) or 0) * 50 +\n                (mrs.get(\"\
+          none\", 0) or 0) * 0\n            ) / total_mr\n        else:\n        \
+          \    message_retention = 0.0\n\n        coverage_count_val = int(summary.get(\"\
+          total_media\") or total_sent or total_mr or 0)\n\n        # by_media_type\
+          \ (nếu có trong summary thì dùng trực tiếp)\n        by_media = summary.get(\"\
+          by_media_type\") or {}\n\n        # Chuẩn hóa giá trị về int\n        if\
+          \ isinstance(by_media, dict):\n            by_media = {str(k): int(v) for\
+          \ k, v in by_media.items() if isinstance(v, (int, float))}\n\n        return\
+          \ pickup_rate_val, avg_sentiment, message_retention, coverage_count_val,\
+          \ by_media\n\n    def total_engagement_from_social_summary(social_summary:\
+          \ dict):\n        if isinstance(social_summary.get(\"total_engagement\"\
+          ), (int, float)):\n            return social_summary[\"total_engagement\"\
+          ]\n        ebp = social_summary.get(\"engagement_by_platform\")\n      \
+          \  if isinstance(ebp, dict):\n            return sum(v for v in ebp.values()\
+          \ if isinstance(v, (int, float)))\n        tpp = social_summary.get(\"top_performing_posts\"\
+          )\n        if isinstance(tpp, list):\n            total = 0\n          \
+          \  for p in tpp:\n                val = p.get(\"engagement\")\n        \
+          \        if isinstance(val, (int, float)):\n                    total +=\
+          \ val\n            return total\n        return 0\n\n    # ---------- BRANCH\
+          \ 1: coverage is LIST ----------\n    if isinstance(coverage, list):\n \
+          \       coverage_count = len(coverage)\n\n        # pickup_rate\n      \
+          \  retained = sum(1 for c in coverage if c.get(\"key_message_retained\"\
+          ) in [\"Yes\", \"Partial\"])\n        pickup_rate = (retained / coverage_count\
+          \ * 100) if coverage_count else 0.0\n\n        # avg_sentiment_score\n \
+          \       sentiment_map = {\n            \"Very Positive\": 5,\n         \
+          \   \"Positive\": 4,\n            \"Neutral\": 3,\n            \"Negative\"\
+          : 2,\n            \"Very Negative\": 1\n        }\n        sentiment_scores\
+          \ = [sentiment_map.get(c.get(\"sentiment\"), 3) for c in coverage]\n   \
+          \     avg_sentiment_score = (sum(sentiment_scores) / len(sentiment_scores))\
+          \ if sentiment_scores else 0.0\n\n        # message_retention_rate\n   \
+          \     retention_map = {\"Yes\": 100, \"Partial\": 50, \"No\": 0}\n     \
+          \   retention_scores = [retention_map.get(c.get(\"key_message_retained\"\
+          , \"No\"), 0) for c in coverage]\n        message_retention_rate = (sum(retention_scores)\
+          \ / len(retention_scores)) if retention_scores else 0.0\n\n        # by_media_type:\
+          \ thử nhiều key phổ biến\n        keys_try = [\"media_type\", \"type\",\
+          \ \"channel\", \"outlet_type\"]\n        counter = Counter()\n        for\
+          \ c in coverage:\n            label = None\n            for k in keys_try:\n\
+          \                if k in c and c[k]:\n                    label = str(c[k])\n\
+          \                    break\n            if label is None:\n            \
+          \    label = \"Unknown\"\n            counter[label] += 1\n        by_media_type\
+          \ = dict(counter)\n\n    # ---------- BRANCH 2: coverage is SUMMARY DICT\
+          \ ----------\n    elif isinstance(coverage, dict):\n        pickup_rate,\
+          \ avg_sentiment_score, message_retention_rate, coverage_count, by_media_type\
+          \ = metrics_from_coverage_summary(coverage)\n        # Bảo đảm có object,\
+          \ không None\n        if not isinstance(by_media_type, dict):\n        \
+          \    by_media_type = {}\n\n    else:\n        raise ValueError(\"coverage_data\
+          \ must be a list of dicts or a summary dict\")\n\n    # ---------- SOCIAL\
+          \ ENGAGEMENT ----------\n    if social is None:\n        total_social_engagement\
+          \ = 0\n    elif isinstance(social, list):\n        total_social_engagement\
+          \ = 0\n        for s in social:\n            engagement = s.get(\"engagement\"\
+          , 0)\n            if isinstance(engagement, dict):\n                total_social_engagement\
+          \ += sum(v for v in engagement.values() if isinstance(v, (int, float)))\n\
+          \            elif isinstance(engagement, (int, float)):\n              \
+          \  total_social_engagement += engagement\n    elif isinstance(social, dict):\n\
+          \        total_social_engagement = total_engagement_from_social_summary(social)\n\
+          \    else:\n        total_social_engagement = 0\n\n    # ---------- OUTPUT\
+          \ ----------\n    return {\n        \"pickup_rate\": round(pickup_rate,\
+          \ 1),\n        \"avg_sentiment_score\": round(avg_sentiment_score, 2),\n\
+          \        \"message_retention_rate\": round(message_retention_rate, 1),\n\
+          \        \"total_social_engagement\": total_social_engagement,\n       \
+          \ \"coverage_count\": int(coverage_count),\n        \"by_media_type\": by_media_type\
+          \  # <<== Thêm object này\n    }"
+        code_language: python3
+        outputs:
+          avg_sentiment_score:
+            children: null
+            type: number
+          by_media_type:
+            children: null
+            type: object
+          coverage_count:
+            children: null
+            type: number
+          message_retention_rate:
+            children: null
+            type: number
+          pickup_rate:
+            children: null
+            type: number
+          total_social_engagement:
+            children: null
+            type: number
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1772075654983'
+          - structured_output
+          value_type: object
+          variable: coverage_data
+        - value_selector:
+          - '1772075690866'
+          - structured_output
+          value_type: object
+          variable: social_data
+      height: 52
+      id: '1772076896678'
+      position:
+        x: 2092
+        y: 195
+      positionAbsolute:
+        x: 2092
+        y: 195
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772076835547'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 50e18055-9947-4f3f-9664-32148cc72cf4
+          role: system
+          text: 'Based on:
+
+            - Regional gaps: {{#context#}}
+
+            - Metrics: {{#1772076896678.pickup_rate#}},{{#1772076896678.avg_sentiment_score#}},{{#1772076896678.message_retention_rate#}},{{#1772076896678.total_social_engagement#}},{{#1772076896678.coverage_count#}}
+
+
+            Generate actionable recommendations:
+
+            1. Regional strategy
+
+            2. Topic optimization
+
+            3. Timing improvements
+
+            4. Channel focus'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              area_improve:
+                type: string
+              future_strategy:
+                type: string
+              recommendation:
+                type: string
+            required: []
+            type: object
+        structured_output_enabled: true
+        title: LLM 5
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772077399271'
+      position:
+        x: 2434
+        y: 174
+      positionAbsolute:
+        x: 2434
+        y: 174
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772077679081'
+          - text
+          value_type: string
+          variable: text
+        selected: false
+        title: Output
+        type: end
+      height: 88
+      id: '1772077656652'
+      position:
+        x: 3138
+        y: 193
+      positionAbsolute:
+        x: 3138
+        y: 193
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 737e007f-33c3-4ab5-a95d-e726997863e8
+          role: system
+          text: 'Write a full report based on this instruction template
+
+            === PUBLICITY ANALYSIS REPORT ===
+
+            Period: {{#1772075438211.analysis_period#}}
+
+            Generated: {{#1772077722316.text#}}
+
+
+            OVERALL METRICS:
+
+            Total Press Releases: {{#1772075632466.structured_output.total_press#}}
+
+            Total Media Coverage: {{#1772075654983.structured_output.total_media#}}
+
+            Pickup Rate: {{#1772076896678.pickup_rate#}}%
+
+            Average Sentiment: {{#1772076896678.avg_sentiment_score#}}/5
+
+            Message Retention: {{#1772076896678.message_retention_rate#}}%
+
+
+            REGIONAL BREAKDOWN:
+
+            {{#1772075632466.structured_output.region_breakdown#}}
+
+
+            TOP PERFORMERS:
+
+            {{#1772075690866.structured_output.top_performer#}}
+
+
+            AREAS NEEDING IMPROVEMENT:
+
+            {{#1772077399271.structured_output.area_improve#}}
+
+
+            RECOMMENDATIONS:
+
+            {{#1772077399271.structured_output.recommendation#}}
+
+            NEXT PERIOD STRATEGY:
+
+            {{#1772077399271.structured_output.future_strategy#}}
+
+            ===
+
+            {{#1772076896678.avg_sentiment_score#}}/5
+
+            Message Retention: {{#1772076896678.message_retention_rate#}}%
+
+
+
+            AREAS NEEDING IMPROVEMENT, RECOMMENDATIONS, NEXT PERIOD STRATEGY are in
+            {{#1772077399271.text#}}'
+        selected: false
+        title: LLM 6
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772077679081'
+      position:
+        x: 2796
+        y: 190
+      positionAbsolute:
+        x: 2796
+        y: 190
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: Current Time
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d'
+          timezone:
+            type: constant
+            value: UTC
+        tool_description: A tool for getting the current time.
+        tool_label: Current Time
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 114
+      id: '1772077722316'
+      position:
+        x: 1074.2049882499787
+        y: 569.7147297495129
+      positionAbsolute:
+        x: 1074.2049882499787
+        y: 569.7147297495129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -1257.9870000474484
+      y: 284.575661549173
+      zoom: 0.609385394307287
+  rag_pipeline_variables: []

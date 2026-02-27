@@ -1,0 +1,845 @@
+app:
+  description: Generates handover documents from project files
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Project Handover Generator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 5
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1771990727403-source-1771990733139-target
+      selected: false
+      source: '1771990727403'
+      sourceHandle: source
+      target: '1771990733139'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1771989983195-source-1771990733139-target
+      selected: false
+      source: '1771989983195'
+      sourceHandle: source
+      target: '1771990733139'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1771990733139-source-1771990796935-target
+      selected: false
+      source: '1771990733139'
+      sourceHandle: source
+      target: '1771990796935'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1771989460555-source-1771989489364-target
+      selected: false
+      source: '1771989460555'
+      sourceHandle: source
+      target: '1771989489364'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1771989489364-source-1772001724590-target
+      selected: false
+      source: '1771989489364'
+      sourceHandle: source
+      target: '1772001724590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772001724590-source-1771990733139-target
+      selected: false
+      source: '1772001724590'
+      sourceHandle: source
+      target: '1771990733139'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1771989489364-source-1771989983195-target
+      selected: false
+      source: '1771989489364'
+      sourceHandle: source
+      target: '1771989983195'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1771989489364-source-1771990727403-target
+      selected: false
+      source: '1771989489364'
+      sourceHandle: source
+      target: '1771990727403'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772001724590-source-1771989983195-target
+      selected: false
+      source: '1772001724590'
+      sourceHandle: source
+      target: '1771989983195'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772001724590-source-1771990727403-target
+      selected: false
+      source: '1772001724590'
+      sourceHandle: source
+      target: '1771990727403'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1771989288562-source-1772002396008-target
+      source: '1771989288562'
+      sourceHandle: source
+      target: '1772002396008'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: document-extractor
+      id: 1772002396008-source-1771989460555-target
+      source: '1772002396008'
+      sourceHandle: source
+      target: '1771989460555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: project_name
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: project_name
+        - default: ''
+          hint: ''
+          label: outgoing_staff
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: outgoing_staff
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: project_files
+          max_length: 5
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: project_files
+      height: 140
+      id: '1771989288562'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: true
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 92
+      id: '1771989460555'
+      position:
+        x: 694
+        y: 303
+      positionAbsolute:
+        x: 694
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771989460555'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 17645143-70e8-4815-ba1c-99a006f44f93
+          role: system
+          text: "Analyze the following project documents and extract key information:\n\
+            \n{{#context#}}\nExtract in JSON format:\n{\n  \"timeline_events\": [{\"\
+            date\": \"\", \"event\": \"\", \"decision\": \"\"}],\n  \"key_contacts\"\
+            : [{\"name\": \"\", \"organization\": \"\", \"role\": \"\", \"relationship_quality\"\
+            : \"\"}],\n  \"pending_items\": [{\"item\": \"\", \"deadline\": \"\",\
+            \ \"action_needed\": \"\"}],\n  \"critical_documents\": [{\"name\": \"\
+            \", \"location\": \"\", \"purpose\": \"\"}],\n  \"important_decisions\"\
+            : [{\"decision\": \"\", \"rationale\": \"\", \"approver\": \"\"}]\n}"
+        selected: false
+        structured_output:
+          schema:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              critical_documents:
+                items:
+                  additionalProperties: false
+                  properties:
+                    location:
+                      description: Where the document is stored
+                      type: string
+                    name:
+                      description: Document name
+                      type: string
+                    purpose:
+                      description: Purpose of the document
+                      type: string
+                  required:
+                  - name
+                  - location
+                  - purpose
+                  type: object
+                type: array
+              important_decisions:
+                items:
+                  additionalProperties: false
+                  properties:
+                    approver:
+                      description: Person or authority approving the decision
+                      type: string
+                    decision:
+                      description: Decision description
+                      type: string
+                    rationale:
+                      description: Reasoning behind the decision
+                      type: string
+                  required:
+                  - decision
+                  - rationale
+                  - approver
+                  type: object
+                type: array
+              key_contacts:
+                items:
+                  additionalProperties: false
+                  properties:
+                    name:
+                      description: Contact name
+                      type: string
+                    organization:
+                      description: Organization or affiliation
+                      type: string
+                    relationship_quality:
+                      description: Quality of relationship (e.g., strong, neutral,
+                        weak)
+                      type: string
+                    role:
+                      description: Role or title
+                      type: string
+                  required:
+                  - name
+                  - organization
+                  - role
+                  - relationship_quality
+                  type: object
+                type: array
+              pending_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    action_needed:
+                      description: Action required to complete the item
+                      type: string
+                    deadline:
+                      description: Deadline (ISO 8601 recommended)
+                      examples:
+                      - '2026-03-01'
+                      type: string
+                    item:
+                      description: Pending task or item
+                      type: string
+                  required:
+                  - item
+                  - deadline
+                  - action_needed
+                  type: object
+                type: array
+              timeline_events:
+                items:
+                  additionalProperties: false
+                  properties:
+                    date:
+                      description: Date of the event (ISO 8601 recommended)
+                      examples:
+                      - '2026-02-25'
+                      type: string
+                    decision:
+                      description: Decision made at the event
+                      type: string
+                    event:
+                      description: Description of the event
+                      type: string
+                  required:
+                  - date
+                  - event
+                  - decision
+                  type: object
+                type: array
+            required:
+            - timeline_events
+            - key_contacts
+            - pending_items
+            - critical_documents
+            - important_decisions
+            title: ProjectSummary
+            type: object
+        structured_output_enabled: false
+        title: LLM Information extraction
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771989489364'
+      position:
+        x: 1035.8435422136113
+        y: 303
+      positionAbsolute:
+        x: 1035.8435422136113
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: ae5adf10-74a5-4cdb-8150-ec179a737b57
+          role: system
+          text: 'Combine extracted timeline {{#1771989489364.text#}} with knowledge
+            base template
+
+            Generate chronological project history'
+        selected: false
+        title: LLM Timeline synthesis
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771989983195'
+      position:
+        x: 1742.834974964961
+        y: 123.85805583434814
+      positionAbsolute:
+        x: 1742.834974964961
+        y: 123.85805583434814
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: 8ca8ad4b-e7b8-4af7-a560-496ad6580673
+          role: system
+          text: 'Analyze extracted contacts {{#1771989489364.text#}}
+
+            Generate relationship notes and tips for successor'
+        selected: false
+        title: LLM contact & relationship
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771990727403'
+      position:
+        x: 1737.3294616974895
+        y: 407.7019715766785
+      positionAbsolute:
+        x: 1737.3294616974895
+        y: 407.7019715766785
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772001724590'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: langgenius/azure_openai/azure_openai
+        prompt_template:
+        - id: f56961eb-ecda-44ae-92b0-60191d523f4b
+          role: system
+          text: 'Combine all analysis from {{#1771989983195.text#}},{{#1771990727403.text#}}{{#1771989489364.text#}}
+
+            Generate complete handover document following template {{#context#}}
+
+
+            ==============================================
+
+            PROJECT HANDOVER DOCUMENT
+
+            ==============================================
+
+            Project: {{#1771989288562.project_name#}}
+
+            Outgoing Staff: {{#1771989288562.outgoing_staff#}}
+
+            Generated: {{#1772002396008.text#}}
+
+            ==============================================
+
+
+            {{#1771989489364.text#}}
+
+
+            ==============================================
+
+            CRITICAL UPCOMING DATES
+
+            {{#1771989983195.text#}}
+
+
+            SUCCESSOR RECOMMENDATIONS
+
+            {{#1771990727403.text#}}
+
+            =============================================='
+        selected: false
+        title: LLM Final Document generation
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771990733139'
+      position:
+        x: 2067.7753087823276
+        y: 217.89185746992473
+      positionAbsolute:
+        x: 2067.7753087823276
+        y: 217.89185746992473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1771990733139'
+          - text
+          value_type: string
+          variable: text
+        selected: false
+        title: Output
+        type: end
+      height: 88
+      id: '1771990796935'
+      position:
+        x: 2573.73432261296
+        y: 212.06774221346404
+      positionAbsolute:
+        x: 2573.73432261296
+        y: 212.06774221346404
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - 95ngXoBK7I1DS1X6HVdpWpXxmmAiGkrnJXLFElYrCunzIwPASpYik+0CIWNCe8FM
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1771989489364'
+        - text
+        retrieval_mode: multiple
+        selected: true
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: '1772001724590'
+      position:
+        x: 1459.5389040191
+        y: 286.3878177680131
+      positionAbsolute:
+        x: 1459.5389040191
+        y: 286.3878177680131
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: Current Time
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d'
+          timezone:
+            type: constant
+            value: UTC
+        tool_description: A tool for getting the current time.
+        tool_label: Current Time
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 114
+      id: '1772002396008'
+      position:
+        x: 391.03950693525894
+        y: 303
+      positionAbsolute:
+        x: 391.03950693525894
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -494.4146522172921
+      y: 195.9565705471491
+      zoom: 0.5742364429888714
+  rag_pipeline_variables: []
