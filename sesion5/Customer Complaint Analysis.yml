@@ -1,0 +1,1095 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: workflow-5d
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/groq:0.0.12@38f75b2f4a3687af7b0947693c7903f5c7d8756f217ea492b8b81de6f16601f6
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.1.2@fcf107badccaf57948634ad2c557d393c3894138d83f4eb3f959e9a1d3a86512
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1772114500703-source-1772115865013-target
+      source: '1772114500703'
+      sourceHandle: source
+      target: '1772115865013'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772115871103-source-1772115880124-target
+      source: '1772115871103'
+      sourceHandle: source
+      target: '1772115880124'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1772115880124-source-1772115890797-target
+      source: '1772115880124'
+      sourceHandle: source
+      target: '1772115890797'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1772115890797-true-1772115900503-target
+      source: '1772115890797'
+      sourceHandle: 'true'
+      target: '1772115900503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-true-1772115908812-target
+      source: '1772115890797'
+      sourceHandle: 'true'
+      target: '1772115908812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-true-1772115911458-target
+      source: '1772115890797'
+      sourceHandle: 'true'
+      target: '1772115911458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1772115890797-22766d63-4675-4ea9-8e79-a7e79b64c744-1772115900503-target
+      source: '1772115890797'
+      sourceHandle: 22766d63-4675-4ea9-8e79-a7e79b64c744
+      target: '1772115900503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-22766d63-4675-4ea9-8e79-a7e79b64c744-1772115908812-target
+      source: '1772115890797'
+      sourceHandle: 22766d63-4675-4ea9-8e79-a7e79b64c744
+      target: '1772115908812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-9a60f334-4b10-4267-a2ad-bd734a2a0fab-1772115908812-target
+      source: '1772115890797'
+      sourceHandle: 9a60f334-4b10-4267-a2ad-bd734a2a0fab
+      target: '1772115908812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1772115890797-9a60f334-4b10-4267-a2ad-bd734a2a0fab-1772115900503-target
+      source: '1772115890797'
+      sourceHandle: 9a60f334-4b10-4267-a2ad-bd734a2a0fab
+      target: '1772115900503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-9a60f334-4b10-4267-a2ad-bd734a2a0fab-1772115911458-target
+      source: '1772115890797'
+      sourceHandle: 9a60f334-4b10-4267-a2ad-bd734a2a0fab
+      target: '1772115911458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-false-1772115911458-target
+      source: '1772115890797'
+      sourceHandle: 'false'
+      target: '1772115911458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1772115890797-false-1772115900503-target
+      source: '1772115890797'
+      sourceHandle: 'false'
+      target: '1772115900503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-false-1772115908812-target
+      source: '1772115890797'
+      sourceHandle: 'false'
+      target: '1772115908812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772115890797-22766d63-4675-4ea9-8e79-a7e79b64c744-1772115911458-target
+      source: '1772115890797'
+      sourceHandle: 22766d63-4675-4ea9-8e79-a7e79b64c744
+      target: '1772115911458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772115908812-source-1772121267374-target
+      source: '1772115908812'
+      sourceHandle: source
+      target: '1772121267374'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: template-transform
+      id: 1772115900503-source-1772121267374-target
+      source: '1772115900503'
+      sourceHandle: source
+      target: '1772121267374'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772115911458-source-1772121267374-target
+      source: '1772115911458'
+      sourceHandle: source
+      target: '1772121267374'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1772121267374-source-1772120663151-target
+      source: '1772121267374'
+      sourceHandle: source
+      target: '1772120663151'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1772120663151-source-1772121395050-target
+      source: '1772120663151'
+      sourceHandle: source
+      target: '1772121395050'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1772121395050-source-1772121405890-target
+      source: '1772121395050'
+      sourceHandle: source
+      target: '1772121405890'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772115865013-source-1772163716713-target
+      source: '1772115865013'
+      sourceHandle: source
+      target: '1772163716713'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1772163716713-source-1772115871103-target
+      source: '1772163716713'
+      sourceHandle: source
+      target: '1772115871103'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1772121405890-source-1772165079365-target
+      source: '1772121405890'
+      sourceHandle: source
+      target: '1772165079365'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: Customer ID
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: customer_id
+        - default: ''
+          hint: ''
+          label: Customer Name
+          max_length: 100
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: customer_name
+        - hint: ''
+          label: Complaint Channel
+          options:
+          - Phone
+          - Email
+          - Web
+          - SNS
+          placeholder: ''
+          required: true
+          type: select
+          variable: complaint_channel
+        - default: ''
+          hint: ''
+          label: Complaint Description
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: complaint_text
+        - hint: ''
+          label: Is Business Customer?
+          options:
+          - 'Yes'
+          - 'No'
+          placeholder: ''
+          required: true
+          type: select
+          variable: is_business_customer
+      height: 214
+      id: '1772114500703'
+      position:
+        x: 92.63609588435793
+        y: 176.39834153786586
+      positionAbsolute:
+        x: 92.63609588435793
+        y: 176.39834153786586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-120b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 385023ec-f0df-4fdc-bd3b-c5dc98d94b06
+          role: system
+          text: ''
+        - id: c775ff10-a552-4787-8755-ab73d2521746
+          role: user
+          text: '
+
+            You are an ultra-strict data extraction API. Your ONLY purpose is to output
+            pure, valid, raw JSON.
+
+            Customer: {{#1772114500703.customer_name#}}
+
+            Channel: {{#1772114500703.complaint_channel#}}
+
+            Is Business Customer: {{#1772114500703.is_business_customer#}}
+
+            Complaint: {{#1772114500703.complaint_text#}}
+
+            CRITICAL RULES - READ CAREFULLY OR YOU WILL BREAK THE SYSTEM: 1. DO NOT
+            generate `<think>` tags. 2. DO NOT output any reasoning, explanations,
+            or thought processes. 3. DO NOT output Markdown formatting (no ```json
+            or ```). 4. The VERY FIRST character of your response must be `{`. 5.
+            The VERY LAST character of your response must be `}`. Extract the information
+            into this EXACT JSON structure: { "emotion": "<one of: Very Angry, Angry,
+            Frustrated, Disappointed, Neutral, Calm>", "category": "<one of: Service
+            Outage, Billing, Appointment, Equipment, Service Quality, Staff Conduct>",
+            "key_issues": [ "<issue 1>", "<issue 2>" ], "urgency_indicators": [ "<indicator
+            1>" ], "business_impact": "<description of business impact if any>" }
+
+
+            Analyze the complaint above. Output ONLY this JSON, nothing else:
+
+            {"emotion":"<Very Angry|Angry|Frustrated|Disappointed|Neutral|Calm>","category":"<Service
+            Outage|Billing|Appointment|Equipment|Service Quality|Staff Conduct>","key_issues":["<issue1>","<issue2>"],"urgency_indicators":["<indicator1>"],"business_impact":"<description
+            or empty string>"}
+
+
+            /no_think
+
+            '
+        selected: false
+        title: Extract Complaint Details
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772115865013'
+      position:
+        x: 486.14247017239376
+        y: 188.83533360260532
+      positionAbsolute:
+        x: 486.14247017239376
+        y: 188.83533360260532
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - ykSFP7ehFVt+fJVwYIXg6AQTrxZeGzDZXquouyETeSdMGlm+6nUSkYZ2NCqmDAaV
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          reranking_model:
+            model: rerank-english-v3.0
+            provider: langgenius/cohere/cohere
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.5
+            vector_setting:
+              embedding_model_name: bge-large:latest
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.5
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1772163716713'
+        - category
+        retrieval_mode: multiple
+        selected: false
+        title: Get Category Definition
+        type: knowledge-retrieval
+      height: 91
+      id: '1772115871103'
+      position:
+        x: 1300.8665211663101
+        y: 303
+      positionAbsolute:
+        x: 1300.8665211663101
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772115871103'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.1-8b-instant
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 3fe81955-7ef8-49ab-84c9-17a09a961da8
+          role: system
+          text: ''
+        - id: d5de743d-bd47-41d2-a150-a6bd57d64d85
+          role: user
+          text: "Based on the complaint analysis and category definition from KB,\
+            \ calculate a severity score from 1-10.\n\nComplaint Analysis:\n{{#1772115865013.text#}}\n\
+            and Emotion level: {{#1772163716713.emotion#}}\n\nCategory Definition\
+            \ & SLA from KB:\n{{#context#}}\n\n\nChannel: {{#1772114500703.complaint_channel#}}\n\
+            Is Business Customer: {{#1772114500703.is_business_customer#}}\n\nScoring\
+            \ Rules:\n- Emotion level: Very Angry/Angry = +3, Frustrated = +2, Disappointed\
+            \ = +1, Neutral/Calm = +0\n- Business customer: +2 if Yes\n- Channel impact:\
+            \ SNS = +2 (public exposure risk), Phone/Email/Web = +0\n- Category: Service\
+            \ Outage = +2, Staff Conduct = +1, Billing = +1, Others = +0\n- Repeated\
+            \ issues indicator: +1 if mentioned\n- SLA breach: +1 if issue duration\
+            \ exceeds SLA from KB\n\nRespond ONLY with this JSON format:\n{\n  \"\
+            severity_score\": <number 1-10>,\n  \"severity_level\": \"<Critical if\
+            \ 8-10, High if 6-7, Medium if 4-5, Low if 1-3>\",\n  \"scoring_breakdown\"\
+            : {\n    \"emotion\": <points>,\n    \"business_customer\": <points>,\n\
+            \    \"channel_risk\": <points>,\n    \"category\": <points>,\n    \"\
+            repeated_issues\": <points>,\n    \"sla_breach\": <points>\n  },\n  \"\
+            sla_info\": {\n    \"response_time\": \"<from KB>\",\n    \"resolution_target\"\
+            : \"<from KB>\",\n    \"escalation_rule\": \"<from KB>\"\n  }\n}\n"
+        selected: false
+        title: Severity Scoring
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772115880124'
+      position:
+        x: 1593.518185447934
+        y: 148.75941139328268
+      positionAbsolute:
+        x: 1593.518185447934
+        y: 148.75941139328268
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 0947d3d9-c754-4681-be2a-f78ba089273b
+            value: Critical
+            varType: string
+            variable_selector:
+            - '1772115880124'
+            - text
+          id: 'true'
+          logical_operator: and
+        - case_id: 22766d63-4675-4ea9-8e79-a7e79b64c744
+          conditions:
+          - comparison_operator: contains
+            id: 26812cdb-6f0c-4f5c-8edd-3462ee505d51
+            value: High
+            varType: string
+            variable_selector:
+            - '1772115880124'
+            - text
+          id: 22766d63-4675-4ea9-8e79-a7e79b64c744
+          logical_operator: and
+        - case_id: 9a60f334-4b10-4267-a2ad-bd734a2a0fab
+          conditions:
+          - comparison_operator: contains
+            id: 5437d749-bff8-42c6-81f6-07367b01b8f0
+            value: Medium
+            varType: string
+            variable_selector:
+            - '1772115880124'
+            - text
+          id: 9a60f334-4b10-4267-a2ad-bd734a2a0fab
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 221
+      id: '1772115890797'
+      position:
+        x: 1888
+        y: 282
+      positionAbsolute:
+        x: 1888
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - nPv4h6LjZwhLpfPh8AMWsT2oGhj+xFscFSCu1eM03dZDVCuY1Hx/fLfelTZnr8DX
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          reranking_model:
+            model: rerank-english-v3.0
+            provider: langgenius/cohere/cohere
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.5
+            vector_setting:
+              embedding_model_name: bge-large:latest
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.5
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1772163716713'
+        - emotion
+        retrieval_mode: multiple
+        selected: false
+        title: Get Resolution Guidelines
+        type: knowledge-retrieval
+      height: 91
+      id: '1772115900503'
+      position:
+        x: 2244.5748090824263
+        y: 136.73557161819622
+      positionAbsolute:
+        x: 2244.5748090824263
+        y: 136.73557161819622
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.1-8b-instant
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 733175dc-16d7-445f-9443-b4541ff6bebe
+          role: system
+          text: ''
+        - id: 33cbf0c1-ddab-4430-9071-8ba938859269
+          role: user
+          text: "Based on the complaint analysis below, identify the most likely root\
+            \ causes.\n\nComplaint Analysis:\n{{#1772115865013.text#}}\n\nSeverity\
+            \ Assessment:\n{{#1772115880124.text#}}\n\nConsider these common root\
+            \ causes per category:\n- Service Outage: Equipment failure, fiber cut,\
+            \ power outage, config error, network congestion\n- Billing: System errors,\
+            \ plan change not applied, promotion expired, payment processing delay\n\
+            - Appointment: Dispatch errors, traffic/weather, overbooking, incorrect\
+            \ info, parts unavailable\n- Equipment: Age/wear, power surge, firmware\
+            \ bugs, environmental factors, user error\n- Service Quality: Network\
+            \ congestion, equipment limitations, building interference, distance\n\
+            - Staff Conduct: Training gaps, workload stress, miscommunication, policy\
+            \ confusion\n\nRespond ONLY with this JSON:\n{\n  \"root_cause_hypothesis\"\
+            : [\n    \"<most likely root cause>\",\n    \"<secondary possible cause>\"\
+            \n  ],\n  \"contributing_factors\": [\"<factor 1>\", \"<factor 2>\"],\n\
+            \  \"prevention_recommendation\": \"<how to prevent this in the future>\"\
+            \n}\n"
+        selected: false
+        title: Root Cause Analysis
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772115908812'
+      position:
+        x: 2270.935990366297
+        y: 334.4986426520944
+      positionAbsolute:
+        x: 2270.935990366297
+        y: 334.4986426520944
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.1-8b-instant
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: c3ca104b-6172-42c5-9aa5-b017155f91d7
+          role: system
+          text: ''
+        - id: 60c37969-7e76-4fea-822c-7ea88ca9dff0
+          role: user
+          text: "Based on the complaint analysis, identify similar past complaints\
+            \ from our database.\n\nCurrent Complaint:\n{{#1772115865013.text#}}\n\
+            \nKnown complaint database:\n- C001: Mr. Kondo, Phone, Angry, Service\
+            \ Outage - Internet down 3 days, no updates\n- C002: Ms. Yamashita, Web,\
+            \ Frustrated, Appointment - Technician missed visit twice\n- C003: Mr.\
+            \ Tanabe, Phone, Disappointed, Billing - Charged different amount than\
+            \ contract\n- C004: Ms. Nakagawa, Email, Upset, Billing - Billing errors\
+            \ 3 consecutive months\n- C005: Mr. Fujita, Phone, Calm, Compensation\
+            \ - Request for compensation after service issues\n- C006: Ms. Sato, SNS,\
+            \ Angry, Service Quality - Posted about slow speeds\n- C007: Mr. Ito,\
+            \ Phone, Frustrated, Equipment - Router replacement delayed 2 weeks\n\
+            - C008: Ms. Watanabe, Web, Neutral, Information - Unclear about new pricing\n\
+            - C009: Mr. Yamada, Phone, Very Angry, Service Outage - Business customer,\
+            \ lost revenue\n- C010: Ms. Kobayashi, Email, Disappointed, Staff Conduct\
+            \ - Rude representative\n- C011: Mr. Suzuki, Phone, Frustrated, Appointment\
+            \ - Waited 4 hours for technician\n- C012: Ms. Tanaka, SNS, Angry, Service\
+            \ Quality - Compared unfavorably to competitor\n\nRespond ONLY with this\
+            \ JSON:\n{\n  \"similar_complaints\": [\n    {\n      \"id\": \"<complaint\
+            \ ID>\",\n      \"similarity\": \"High/Medium/Low\",\n      \"common_factors\"\
+            : [\"<factor>\"]\n    }\n  ]\n}\n"
+        selected: false
+        title: Find Similar Complaints
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772115911458'
+      position:
+        x: 2270.935990366297
+        y: 574.002505829024
+      positionAbsolute:
+        x: 2270.935990366297
+        y: 574.002505829024
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.1-8b-instant
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 2df9c08b-faa8-4d2a-9e76-5405d5a43194
+          role: system
+          text: ''
+        - id: f60e0316-15b0-41cd-bbcb-a7a06c8c8bbd
+          role: user
+          text: "You are a customer service expert. Generate a comprehensive response\
+            \ and action plan.\n\nCustomer: {{#1772114500703.customer_name#}}\nChannel:\
+            \ {{#1772114500703.complaint_channel#}}\nIs Business Customer: {{#1772114500703.is_business_customer#}}\n\
+            \nComplaint Analysis:\n{{#1772115865013.text#}}\n\nSeverity Assessment:\n\
+            {{#1772115880124.text#}}\n\nResolution Guidelines, Root Cause Analysis\
+            \ & Similar Cases (from parallel processing):\n{{#1772121267374.output#}}\n\
+            \nBased on ALL the information above (especially the Resolution Guidelines\
+            \ from KB), generate a response following these rules:\n1. Match tone\
+            \ to customer emotion level per the emotion-based response guidelines\
+            \ retrieved from KB\n2. Include specific actions with timelines\n3. Recommend\
+            \ appropriate compensation from the compensation table retrieved from\
+            \ KB\n4. Include escalation steps if severity >= 8\n5. Check escalation\
+            \ triggers from the guidelines\n\nRespond ONLY with this JSON:\n{\n  \"\
+            recommended_response\": {\n    \"immediate_action\": \"<what to do right\
+            \ now>\",\n    \"technical_action\": \"<technical steps if applicable>\"\
+            ,\n    \"communication\": \"<how to keep customer updated>\",\n    \"\
+            compensation\": \"<specific compensation from KB guidelines>\"\n  },\n\
+            \  \"escalation_needed\": true/false,\n  \"escalation_to\": \"<role if\
+            \ needed, or 'N/A'>\",\n  \"follow_up_timeline\": \"<when to follow up>\"\
+            ,\n  \"customer_message\": \"<draft message to customer in appropriate\
+            \ tone per emotion-based response from KB>\"\n}\n"
+        selected: false
+        title: Generate Response & Action Plan
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772120663151'
+      position:
+        x: 2877.9666228120404
+        y: 339.69414519452863
+      positionAbsolute:
+        x: 2877.9666228120404
+        y: 339.69414519452863
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        selected: false
+        template: '=== RESOLUTION GUIDELINES FROM KB ===
+
+          {% for item in kb_guidelines %}
+
+          {{ item.content }}
+
+          {% endfor %}
+
+
+          === ROOT CAUSE ANALYSIS ===
+
+          {{ root_cause }}
+
+
+          === SIMILAR PAST COMPLAINTS ===
+
+          {{ similar }}
+
+          '
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1772115900503'
+          - result
+          value_type: array[object]
+          variable: kb_guidelines
+        - value_selector:
+          - '1772115908812'
+          - text
+          value_type: string
+          variable: root_cause
+        - value_selector:
+          - '1772115911458'
+          - text
+          value_type: string
+          variable: similar
+      height: 53
+      id: '1772121267374'
+      position:
+        x: 2575.088143690506
+        y: 348.527011280048
+      positionAbsolute:
+        x: 2575.088143690506
+        y: 348.527011280048
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.1-8b-instant
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: d3c7cc95-364b-492a-b6ff-d53c19966c11
+          role: system
+          text: ''
+        - id: 3586745d-e2ce-453b-a054-91e0850b5587
+          role: user
+          text: "Based on the complaint analysis and our regional complaint data,\
+            \ provide trend insights.\n\nCurrent Complaint:\n{{#1772115865013.text#}}\n\
+            \nRegional Complaint Data (January 2025):\n| Prefecture | Total | Service\
+            \ | Billing | Appointment | Equipment |\n|------------|-------|---------|---------|-------------|-----------|\n\
+            | Miyagi     | 45    | 18      | 12      | 8           | 7         |\n\
+            | Iwate      | 22    | 8       | 6       | 5           | 3         |\n\
+            | Akita      | 18    | 7       | 5       | 4           | 2         |\n\
+            | Yamagata   | 15    | 6       | 4       | 3           | 2         |\n\
+            | Fukushima  | 28    | 11      | 8       | 5           | 4         |\n\
+            | Aomori     | 12    | 5       | 3       | 2           | 2         |\n\
+            \nTotal all regions: 140 complaints\nTop category: Service (55 = 39%)\n\
+            Top region: Miyagi (45 = 32%)\n\nProvide trend analysis in JSON:\n{\n\
+            \  \"trend_insights\": {\n    \"category_trend\": \"<observation about\
+            \ this complaint category vs overall data>\",\n    \"regional_pattern\"\
+            : \"<which region has most issues and why>\",\n    \"severity_trend\"\
+            : \"<are complaints becoming more/less severe>\",\n    \"recommendation\"\
+            : \"<strategic recommendation to reduce complaints>\"\n  }\n}\n"
+        selected: false
+        structured_output_enabled: true
+        title: Trend Analysis
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1772121395050'
+      position:
+        x: 3179.9666228120404
+        y: 339.69414519452863
+      positionAbsolute:
+        x: 3179.9666228120404
+        y: 339.69414519452863
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        selected: false
+        template: '=== COMPLAINT ANALYSIS REPORT ===
+
+          ID: {{ customer_id }}
+
+          Customer: {{ customer_name }},
+
+          Channel: {{ complaint_channel }}
+
+          {{ extraction }}
+
+
+          # --- SEVERITY ASSESSMENT ---
+
+          {{ severity }}
+
+
+          --- ROOT CAUSE ANALYSIS ---
+
+          {{ root_cause }}
+
+
+          # --- SIMILAR COMPLAINTS ---
+
+          {{ similar }}
+
+
+          # --- RECOMMENDED RESPONSE & ACTION PLAN ---
+
+          {{ response }}
+
+
+          --- TREND INSIGHTS ---
+
+          {{ trends }}
+
+
+          # ===================================
+
+          # * Generated by Complaint Analyzer Workflow
+
+          '
+        title: Template 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1772114500703'
+          - customer_name
+          value_type: string
+          variable: customer_name
+        - value_selector:
+          - '1772114500703'
+          - complaint_channel
+          value_type: string
+          variable: complaint_channel
+        - value_selector:
+          - '1772115865013'
+          - text
+          value_type: string
+          variable: extraction
+        - value_selector:
+          - '1772115880124'
+          - text
+          value_type: string
+          variable: severity
+        - value_selector:
+          - '1772115908812'
+          - text
+          value_type: string
+          variable: root_cause
+        - value_selector:
+          - '1772115911458'
+          - text
+          value_type: string
+          variable: similar
+        - value_selector:
+          - '1772120663151'
+          - text
+          value_type: string
+          variable: response
+        - value_selector:
+          - '1772121395050'
+          - text
+          value_type: string
+          variable: trends
+        - value_selector:
+          - '1772114500703'
+          - customer_id
+          variable: customer_id
+      height: 53
+      id: '1772121405890'
+      position:
+        x: 3542.929809041004
+        y: 348.527011280048
+      positionAbsolute:
+        x: 3542.929809041004
+        y: 348.527011280048
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef main(arg1: str) -> dict:\n    try:\n        data\
+          \ = json.loads(arg1)\n        return {\n            \"category\": data.get(\"\
+          category\", \"Unknown\"),\n            \"emotion\": data.get(\"emotion\"\
+          , \"Unknown\")\n        }\n    except:\n        return {\"category\": \"\
+          Unknown\", \"emotion\": \"Unknown\"}\n"
+        code_language: python3
+        outputs:
+          category:
+            children: null
+            type: string
+          emotion:
+            children: null
+            type: string
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1772115865013'
+          - text
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1772163716713'
+      position:
+        x: 1000.86652116631
+        y: 303
+      positionAbsolute:
+        x: 1000.86652116631
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        outputs:
+        - value_selector:
+          - '1772121405890'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: Output
+        type: end
+      height: 93
+      id: '1772165079365'
+      position:
+        x: 3920.7455506668684
+        y: 348.527011280048
+      positionAbsolute:
+        x: 3920.7455506668684
+        y: 348.527011280048
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -7684.491101333737
+      y: -156.05402256009597
+      zoom: 2
+  rag_pipeline_variables: []
