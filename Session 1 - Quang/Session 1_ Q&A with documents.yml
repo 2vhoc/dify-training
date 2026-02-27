@@ -3,18 +3,13 @@ app:
   icon: 🤖
   icon_background: '#FFEAD5'
   mode: advanced-chat
-  name: Q&A with documents
+  name: 'Session 1: Q&A with documents'
   use_icon_as_answer_icon: false
 dependencies:
 - current_identifier: null
   type: marketplace
   value:
     marketplace_plugin_unique_identifier: langgenius/azure_openai:0.0.37@a035c99b7015994850402564ad9da3ac499b4c02f741f46b2f5db8b5763ab03c
-    version: null
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: langgenius/bedrock:0.0.61@f85184a24555e8475c7bf31e4fe13c5ba09c4f21ab7b8ebf7dccc9e99bcfefb5
     version: null
 kind: app
 version: 0.4.0
@@ -78,24 +73,23 @@ workflow:
     - data:
         isInIteration: false
         isInLoop: false
-        sourceType: start
-        targetType: knowledge-retrieval
-      id: 1772089577502-source-1772089588058-target
-      source: '1772089577502'
+        sourceType: document-extractor
+        targetType: llm
+      id: 1772163561239-source-llm-target
+      source: '1772163561239'
       sourceHandle: source
-      target: '1772089588058'
+      target: llm
       targetHandle: target
       type: custom
       zIndex: 0
     - data:
-        isInIteration: false
         isInLoop: false
-        sourceType: knowledge-retrieval
-        targetType: llm
-      id: 1772089588058-source-llm-target
-      source: '1772089588058'
+        sourceType: start
+        targetType: document-extractor
+      id: 1772089577502-source-1772163561239-target
+      source: '1772089577502'
       sourceHandle: source
-      target: llm
+      target: '1772163561239'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -104,15 +98,30 @@ workflow:
         selected: false
         title: Start
         type: start
-        variables: []
-      height: 51
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: File
+          max_length: 5
+          options: []
+          placeholder: ''
+          required: true
+          type: file
+          variable: File
+      height: 87
       id: '1772089577502'
       position:
-        x: 54
-        y: 273
+        x: 161.96856686697924
+        y: 282
       positionAbsolute:
-        x: 54
-        y: 273
+        x: 161.96856686697924
+        y: 282
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -120,11 +129,14 @@ workflow:
       width: 241
     - data:
         context:
-          enabled: false
-          variable_selector: []
+          enabled: true
+          variable_selector:
+          - '1772163561239'
+          - text
         memory:
           query_prompt_template: '{{#sys.query#}}
 
+            {{#1772163561239.text#}}
 
             {{#sys.files#}}'
           role_prefix:
@@ -142,7 +154,8 @@ workflow:
         prompt_template:
         - id: ed292cf9-1037-4536-acc1-03764abe3bd6
           role: system
-          text: ''
+          text: You are a Q&A assistant for provided documents; answer strictly based
+            on the content, be concise, factual, and focus only the core point.
         selected: false
         title: LLM
         type: llm
@@ -151,12 +164,12 @@ workflow:
       height: 87
       id: llm
       position:
-        x: 680
+        x: 791.4052065800117
         y: 282
       positionAbsolute:
-        x: 680
+        x: 791.4052065800117
         y: 282
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -170,10 +183,10 @@ workflow:
       height: 101
       id: answer
       position:
-        x: 980
+        x: 1104
         y: 282
       positionAbsolute:
-        x: 980
+        x: 1104
         y: 282
       selected: false
       sourcePosition: right
@@ -181,37 +194,28 @@ workflow:
       type: custom
       width: 241
     - data:
-        dataset_ids:
-        - pqxajUMbnUdSsdyEMxWtUg4HxA9mD2LVIz8Hv/WxFk0p2rPGE2ilKqc2YHbNnXIe
-        multiple_retrieval_config:
-          reranking_enable: true
-          reranking_mode: reranking_model
-          reranking_model:
-            model: amazon.rerank-v1:0
-            provider: langgenius/bedrock/bedrock
-          top_k: 4
-        query_variable_selector:
-        - '1772089577502'
-        - sys.query
-        retrieval_mode: multiple
+        is_array_file: false
         selected: false
-        title: Knowledge Retrieval
-        type: knowledge-retrieval
-      height: 89
-      id: '1772089588058'
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1772089577502'
+        - File
+      height: 91
+      id: '1772163561239'
       position:
-        x: 361.5157165665104
-        y: 273
+        x: 460.0000000000001
+        y: 282
       positionAbsolute:
-        x: 361.5157165665104
-        y: 273
-      selected: true
+        x: 460.0000000000001
+        y: 282
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 241
     viewport:
-      x: 6.988224436812118
-      y: 39.528119164803
-      zoom: 0.6597539553864472
+      x: -14.253817678764676
+      y: 74.90367504009237
+      zoom: 0.5743491774985182
   rag_pipeline_variables: []

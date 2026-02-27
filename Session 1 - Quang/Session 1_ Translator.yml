@@ -3,7 +3,7 @@ app:
   icon: 🤖
   icon_background: '#FFEAD5'
   mode: advanced-chat
-  name: Q&A with documents
+  name: 'Session 1: Translator'
   use_icon_as_answer_icon: false
 dependencies:
 - current_identifier: null
@@ -62,6 +62,15 @@ workflow:
   graph:
     edges:
     - data:
+        sourceType: start
+        targetType: llm
+      id: 1772087802279-llm
+      source: '1772087802279'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
         sourceType: llm
         targetType: answer
       id: llm-answer
@@ -70,57 +79,19 @@ workflow:
       target: answer
       targetHandle: target
       type: custom
-    - data:
-        isInIteration: false
-        isInLoop: false
-        sourceType: document-extractor
-        targetType: llm
-      id: 1772163561239-source-llm-target
-      source: '1772163561239'
-      sourceHandle: source
-      target: llm
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInLoop: false
-        sourceType: start
-        targetType: document-extractor
-      id: 1772089577502-source-1772163561239-target
-      source: '1772089577502'
-      sourceHandle: source
-      target: '1772163561239'
-      targetHandle: target
-      type: custom
-      zIndex: 0
     nodes:
     - data:
         selected: false
         title: Start
         type: start
-        variables:
-        - allowed_file_extensions: []
-          allowed_file_types:
-          - document
-          allowed_file_upload_methods:
-          - local_file
-          - remote_url
-          default: ''
-          hint: ''
-          label: File
-          max_length: 5
-          options: []
-          placeholder: ''
-          required: true
-          type: file
-          variable: File
-      height: 87
-      id: '1772089577502'
+        variables: []
+      height: 51
+      id: '1772087802279'
       position:
-        x: 161.96856686697924
+        x: 80
         y: 282
       positionAbsolute:
-        x: 161.96856686697924
+        x: 80
         y: 282
       selected: false
       sourcePosition: right
@@ -149,9 +120,23 @@ workflow:
           name: gpt-4o-2024-08-06
           provider: langgenius/azure_openai/azure_openai
         prompt_template:
-        - id: ed292cf9-1037-4536-acc1-03764abe3bd6
+        - id: 75b981a4-b5fc-4670-8d94-faa9d0097fae
           role: system
-          text: ''
+          text: "You are a translation assistant specialized in Japanese-to-English\
+            \ translation. \nYour role is to accurately, clearly, and naturally translate\
+            \ any Japanese text into English. \nFollow these rules:\n\n1. Always provide\
+            \ the English translation only, unless explicitly asked to show both Japanese\
+            \ and English.\n2. Preserve the meaning, tone, and nuance of the original\
+            \ Japanese text.\n3. Use natural, fluent English that sounds like it was\
+            \ written by a native speaker.\n4. When the Japanese text contains idioms,\
+            \ cultural references, or ambiguous phrases, provide the best equivalent\
+            \ in English and, if necessary, add a short clarification in parentheses.\n\
+            5. Do not add commentary, explanations, or extra information unless the\
+            \ user requests it.\n6. If the Japanese text is incomplete or unclear,\
+            \ politely ask the user for clarification before translating.\n7. Maintain\
+            \ professional, respectful, and concise language at all times.\n8. If\
+            \ the user give a difference language sentence. Say nothing\n\nYour primary\
+            \ function is: Translate Japanese to English.\n"
         selected: false
         title: LLM
         type: llm
@@ -160,12 +145,12 @@ workflow:
       height: 87
       id: llm
       position:
-        x: 796
+        x: 381.3195079107728
         y: 282
       positionAbsolute:
-        x: 796
+        x: 381.3195079107728
         y: 282
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -179,39 +164,18 @@ workflow:
       height: 101
       id: answer
       position:
-        x: 1104
+        x: 678.0000000000001
         y: 282
       positionAbsolute:
-        x: 1104
+        x: 678.0000000000001
         y: 282
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 241
-    - data:
-        is_array_file: false
-        selected: false
-        title: Doc Extractor
-        type: document-extractor
-        variable_selector:
-        - '1772089577502'
-        - File
-      height: 91
-      id: '1772163561239'
-      position:
-        x: 460.0000000000001
-        y: 282
-      positionAbsolute:
-        x: 460.0000000000001
-        y: 282
-      selected: true
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 241
     viewport:
-      x: -185.5821664032801
-      y: -103.75681769310282
-      zoom: 1.0000000000000009
+      x: 97.4515845081595
+      y: 34.75202114479637
+      zoom: 0.5743491774985184
   rag_pipeline_variables: []
