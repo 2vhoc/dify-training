@@ -1,0 +1,62 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "improvement_suggestions": {
+      "description": "Bullet-formatted actionable improvement suggestions. Each line must start with '• '.",
+      "type": "string"
+    },
+    "missing_elements": {
+      "description": "Bullet-formatted missing elements. Each line must start with '• '.",
+      "type": "string"
+    },
+    "overall_score": {
+      "description": "Overall proposal score (0-100).",
+      "type": "number"
+    },
+    "section_scores": {
+      "additionalProperties": false,
+      "properties": {
+        "budget_resources": {
+          "description": "Score for budget and resources section (0-100).",
+          "type": "number"
+        },
+        "executive_summary": {
+          "description": "Score for executive summary section (0-100).",
+          "type": "number"
+        },
+        "expected_outcomes": {
+          "description": "Score for expected outcomes section (0-100).",
+          "type": "number"
+        },
+        "problem_analysis": {
+          "description": "Score for problem analysis section (0-100).",
+          "type": "number"
+        },
+        "proposed_solution": {
+          "description": "Score for proposed solution section (0-100).",
+          "type": "number"
+        }
+      },
+      "required": [
+        "executive_summary",
+        "problem_analysis",
+        "proposed_solution",
+        "expected_outcomes",
+        "budget_resources"
+      ],
+      "type": "object"
+    },
+    "strengths": {
+      "description": "Bullet-formatted strengths. Each line must start with '• '.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "section_scores",
+    "overall_score",
+    "strengths",
+    "missing_elements",
+    "improvement_suggestions"
+  ],
+  "type": "object"
+}
