@@ -1,0 +1,759 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: workflow-5e
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/groq:0.0.12@38f75b2f4a3687af7b0947693c7903f5c7d8756f217ea492b8b81de6f16601f6
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/cohere:0.0.8@1456818eb78f25c1a25e91809cecbd78e5523d39868dcb78607e625913b5e4fe
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1772110367685-source-1772110370221-target
+      source: '1772110367685'
+      sourceHandle: source
+      target: '1772110370221'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1772110370221-source-1772110373973-target
+      source: '1772110370221'
+      sourceHandle: source
+      target: '1772110373973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1772110373973-source-1772110380220-target
+      source: '1772110373973'
+      sourceHandle: source
+      target: '1772110380220'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1772110380220-source-1772110385580-target
+      source: '1772110380220'
+      sourceHandle: source
+      target: '1772110385580'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1772110385580-source-1772110390036-target
+      source: '1772110385580'
+      sourceHandle: source
+      target: '1772110390036'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772110390036-true-1772110413275-target
+      source: '1772110390036'
+      sourceHandle: 'true'
+      target: '1772110413275'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772110390036-5d8bb7e4-acc2-4a8c-947e-905b7fe7c4ba-17721104206720-target
+      source: '1772110390036'
+      sourceHandle: 5d8bb7e4-acc2-4a8c-947e-905b7fe7c4ba
+      target: '17721104206720'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1772110390036-false-17721104219290-target
+      source: '1772110390036'
+      sourceHandle: 'false'
+      target: '17721104219290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772110413275-source-1772110449610-target
+      source: '1772110413275'
+      sourceHandle: source
+      target: '1772110449610'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 17721104206720-source-1772110449610-target
+      source: '17721104206720'
+      sourceHandle: source
+      target: '1772110449610'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 17721104219290-source-1772110449610-target
+      source: '17721104219290'
+      sourceHandle: source
+      target: '1772110449610'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: Input Text
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: input_text
+      height: 109
+      id: '1772110367685'
+      position:
+        x: 68.78502171374521
+        y: 254.7636241619528
+      positionAbsolute:
+        x: 68.78502171374521
+        y: 254.7636241619528
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-20b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: f948b866-5d79-4b1c-835a-67da4b25b8a6
+          role: system
+          text: 'You are a transaction analysis assistant for a Japanese telecom company.
+
+            Extract structured information from free-text transaction descriptions.
+
+            Always respond in valid JSON only, no other text.
+
+            '
+        - id: a6963e25-af0d-4f63-ac7d-76acc994b6d1
+          role: user
+          text: "Analyze this transaction and extract key information:\n\n{{#1772110367685.input_text#}}\n\
+            \nRespond ONLY in JSON:\n{\n  \"description\": \"short summary of the\
+            \ transaction\",\n  \"department\": \"department name if mentioned, or\
+            \ unknown\",\n  \"amount\": numeric amount in JPY if mentioned or 0,\n\
+            \  \"expense_type\": \"consumables/equipment/software/maintenance/travel/training/transportation/entertainment/professional_services/personnel/rent/advertising\"\
+            ,\n  \"is_capital_purchase\": true or false,\n  \"primary_category\":\
+            \ \"general_expense/asset_purchase/it_software/operational/facility\"\
+            ,\n  \"keywords\": [\"keyword1\", \"keyword2\"],\n  \"unit_price_range\"\
+            : \"under_10k/10k_100k/over_100k\",\n  \"recurring\": true or false\n\
+            }\n\nRules:\n- is_capital_purchase = true ONLY if amount > 100,000 AND\
+            \ item has useful life > 1 year\n- If amount not mentioned, set to 0 and\
+            \ unit_price_range to \"unknown\"\n"
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772110370221'
+      position:
+        x: 384.7508381101763
+        y: 282
+      positionAbsolute:
+        x: 384.7508381101763
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - +PXXzIU9gTMQ36dxRQEx8w0YDJMl43ucOqrDU9tylQZxL/d84LMTDL/Pt+2fp0sf
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: rerank-english-v3.0
+            provider: langgenius/cohere/cohere
+          score_threshold: null
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1772110370221'
+        - text
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: '1772110373973'
+      position:
+        x: 684
+        y: 282
+      positionAbsolute:
+        x: 684
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-20b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: f77d4686-d98d-4eee-8963-4cf5f2995c35
+          role: system
+          text: "# Accounting Code Selection Rules\n\n## Decision Tree Approach\n\n\
+            ### Step 1: Is it a capital purchase?\n\n```\nIs the item:\n- Over 100,000\
+            \ JPY AND\n- Has useful life > 1 year?\n        |\n    YES → Use 42xxx\
+            \ codes (Asset Purchases)\n        |\n    NO  → Continue to Step 2\n```\n\
+            \n### Step 2: What is the primary purpose?\n\n```\nPrimary Purpose:\n\
+            \    |\n    ├── IT/Software related → Use 43xxx codes\n    |       ├──\
+            \ Software purchase/subscription → 43201\n    |       └── Hardware maintenance\
+            \ → 43301\n    |\n    ├── Personnel related → Use 41301 (Temporary Personnel)\n\
+            \    |\n    ├── Facility related → Use 45xxx codes\n    |       ├── Rent/lease\
+            \ → 45101\n    |       └── Building maintenance → 45201\n    |\n    └──\
+            \ General operational → Use 44xxx codes\n            ├── Travel → 44101\n\
+            \            ├── Training → 44201\n            ├── Daily transport/communication\
+            \ → 44301\n            ├── Entertainment → 44401\n            ├── Professional\
+            \ services → 44501\n            └── Marketing → 44601\n```\n\n### Step\
+            \ 3: Specific Category Selection (Common Confusion Areas)\n## Travel vs\
+            \ Training (44101 vs 44201)\n\n**Key Question:** What is the PRIMARY purpose\
+            \ of the expense?\n\n| Scenario | Code | Rationale |\n|----------|------|-----------|\n\
+            | Attending seminar as PARTICIPANT | 44201 | Learning is primary purpose\
+            \ |\n| Traveling to GIVE presentation | 44101 | Travel is primary purpose\
+            \ |\n| Conference with learning + networking | 44201 | Learning is primary\
+            \ |\n| Client visit for project work | 44101 | Travel for business activity\
+            \ |\n\n**Special Case - Conference with Both:**\n- Registration fee →\
+            \ 44201 (Training)\n- Travel costs → 44101 (Travel)\n- Split the expense\
+            \ by purpose\n==HET-1-CHUNK==\n## Equipment vs Consumables (42101 vs 41101)\n\
+            \n**Key Questions:**\n1. What is the unit price?\n2. What is the expected\
+            \ useful life?\n\n| Unit Price | Useful Life | Code | Category |\n|------------|-------------|------|----------|\n\
+            | < 10,000 JPY | < 1 year | 41101 | Consumables |\n| 10,000 - 100,000\
+            \ JPY | < 1 year | 41101 | Consumables |\n| 10,000 - 100,000 JPY | > 1\
+            \ year | 42101 | Equipment |\n| > 100,000 JPY | Any | 42101 | Equipment\
+            \ |\n\n**Examples:**\n- Keyboard (8,000 JPY) → 41101 (Consumables)\n-\
+            \ Monitor (35,000 JPY, 3-year life) → 42101 (Equipment)\n- Laptop (150,000\
+            \ JPY) → 42101 (Equipment)\n- Printer ink (5,000 JPY) → 41101 (Consumables)\n\
+            ==HET-1-CHUNK==\n## Maintenance vs Software (43301 vs 43201)\n\n**Key\
+            \ Question:** Is it for HARDWARE or SOFTWARE?\n\n| Item | Code | Rationale\
+            \ |\n|------|------|-----------|\n| Server hardware maintenance | 43301\
+            \ | Physical equipment |\n| Software maintenance fee | 43201 | Software\
+            \ related |\n| SaaS subscription | 43201 | Software service |\n| Network\
+            \ equipment support | 43301 | Physical equipment |\n| Cloud hosting (AWS,\
+            \ Azure) | 43201 | Software/service |\n\n**Combined Maintenance Contracts:**\n\
+            - If contract covers BOTH hardware + software:\n  - Split if amounts are\
+            \ clear\n  - Use 43301 if hardware is primary\n  - Use 43201 if software\
+            \ is primary\n\n## Consulting vs Training (44501 vs 44201)\n\n**Key Question:**\
+            \ Is someone TEACHING us or DOING work for us?\n\n| Scenario | Code |\
+            \ Rationale |\n|----------|------|-----------|\n| External training instructor\
+            \ | 44201 | Teaching our employees |\n| Consultant doing assessment |\
+            \ 44501 | Doing work for us |\n| Workshop facilitation | 44201 | Learning\
+            \ activity |\n| System implementation consulting | 44501 | Professional\
+            \ service |\n| Certification prep course | 44201 | Training/education\
+            \ |\n\n## Common Clarification Questions\n\nWhen uncertain, ask these\
+            \ questions:\n\n1. **What is the unit price of the item?**\n   - Determines\
+            \ Equipment vs Consumables boundary\n\n2. **What is the expected useful\
+            \ life?**\n   - >1 year suggests Equipment or Asset\n\n3. **What is the\
+            \ primary purpose of the expense?**\n   - Learning → Training\n   - Business\
+            \ activity → Travel or relevant operational code\n   - Getting expert\
+            \ help → Professional Services\n\n4. **Is this a recurring or one-time\
+            \ expense?**\n   - Recurring often suggests subscriptions or maintenance\n\
+            \   - One-time might be asset purchase or project expense\n\n5. **Which\
+            \ department will use this?**\n   - Helps determine appropriate budget\
+            \ category\n\n6. **Is this for internal use or client-facing?**\n   -\
+            \ Client-facing often → Entertainment or Marketing\n## Error Prevention\
+            \ Checklist\n\nBefore finalizing a code selection:\n\n- [ ] Verified unit\
+            \ price against thresholds\n- [ ] Confirmed useful life expectation\n\
+            - [ ] Identified primary purpose correctly\n- [ ] Checked for similar\
+            \ past transactions\n- [ ] Considered if expense should be split\n- [\
+            \ ] Verified against department budget categories\n## Common Mistakes\
+            \ and Corrections\n\n| Common Mistake | Correct Approach |\n|----------------|------------------|\n\
+            | All travel as 44101 | Split training registration (44201) from travel\
+            \ costs (44101) |\n| All IT as 43201 | Hardware maintenance is 43301,\
+            \ software is 43201 |\n| Expensive supplies as 41101 | Check if >100,000\
+            \ JPY → 42101 |\n| Consulting as 44201 | Training is 44201, consulting\
+            \ work is 44501 |\n| Combined contracts single code | Split by primary\
+            \ purpose if amounts are known |\n## When to Escalate\n\nContact Finance\
+            \ Department when:\n\n- Transaction > 1,000,000 JPY\n- Uncertain after\
+            \ using decision tree\n- New type of transaction not in guidelines\n-\
+            \ Cross-departmental expense allocation needed\n- International transaction\
+            \ with tax implications\n- Retroactive correction needed\n\n**Finance\
+            \ Contact:**\n- Email: finance-inquiry@example.internal\n- Phone: ext.\
+            \ 3333\n- Response time: Within 2 business days"
+        - id: 74feca5b-078a-47e4-8a74-8a8675c61814
+          role: user
+          text: "Classify this transaction:\n\nANALYSIS: {{#1772110370221.text#}}\n\
+            \nMATCHING CODES: {{#context#}}\n\nORIGINAL INPUT: {{#1772110367685.input_text#}}\n\
+            \nRespond ONLY in JSON:\n{\n  \"recommended_code\": \"5-digit code\",\n\
+            \  \"code_name\": \"category name\",\n  \"confidence\": \"high / medium\
+            \ / low\",\n  \"alternative_codes\": [{\"code\": \"xxxxx\", \"name\":\
+            \ \"name\", \"reason\": \"why\"}],\n  \"rationale\": \"explanation\",\n\
+            \  \"keywords_matched\": [\"kw1\", \"kw2\"],\n  \"rules_applied\": [\"\
+            rule1\"],\n  \"common_mistake_warning\": \"warning or empty string\"\n\
+            }\n"
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772110380220'
+      position:
+        x: 986
+        y: 282
+      positionAbsolute:
+        x: 986
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(recommendation: str) -> dict:\n    text = recommendation.strip()\n\
+          \    if text.startswith(\"```\"):\n        lines = text.split(\"\\n\")\n\
+          \        lines = [l for l in lines if not l.strip().startswith(\"```\")]\n\
+          \        text = \"\\n\".join(lines)\n    try:\n        data = json.loads(text)\n\
+          \        return {\n            \"result\": text,\n            \"confidence\"\
+          : data.get(\"confidence\", \"low\")\n        }\n    except:\n        return\
+          \ {\"result\": text, \"confidence\": \"low\"}\n"
+        code_language: python3
+        outputs:
+          confidence:
+            children: null
+            type: string
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1772110380220'
+          - text
+          value_type: string
+          variable: recommendation
+      height: 52
+      id: '1772110385580'
+      position:
+        x: 1288
+        y: 282
+      positionAbsolute:
+        x: 1288
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 5f0c9820-ac70-409b-a0d6-2489e8138e43
+            value: high
+            varType: string
+            variable_selector:
+            - '1772110385580'
+            - confidence
+          id: 'true'
+          logical_operator: and
+        - case_id: 5d8bb7e4-acc2-4a8c-947e-905b7fe7c4ba
+          conditions:
+          - comparison_operator: is
+            id: ba384be2-2d0a-47de-9d03-6eaa4c9c03f9
+            value: medium
+            varType: string
+            variable_selector:
+            - '1772110385580'
+            - confidence
+          id: 5d8bb7e4-acc2-4a8c-947e-905b7fe7c4ba
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 172
+      id: '1772110390036'
+      position:
+        x: 1590
+        y: 282
+      positionAbsolute:
+        x: 1590
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-20b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 27736506-f3e2-4ee0-ba81-a06750d957cc
+          role: system
+          text: ''
+        - id: 76f99310-4b55-4166-958f-356a1000151f
+          role: user
+          text: 'Review this recommendation and write a final report.
+
+
+            Recommendation: {{#1772110380220.text#}}
+
+
+            Original input: {{#1772110367685.input_text#}}
+
+
+            Write output in this format:
+
+            === ACCOUNTING CODE RECOMMENDATION ===
+
+            ✅ RECOMMENDED CODE: [code] - [code_name]
+
+            CONFIDENCE: HIGH
+
+
+            RATIONALE:
+
+            [rationale from the JSON]
+
+
+            ⚠️ WARNINGS:
+
+            [common_mistake_warning, or "None"]
+
+
+            CHECKLIST:
+
+            - [ ] Unit price verified
+
+            - [ ] Primary purpose confirmed
+
+            - [ ] Check if expense should be split
+
+            ===
+
+            '
+        selected: false
+        title: high
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772110413275'
+      position:
+        x: 1931
+        y: 161.14869835499704
+      positionAbsolute:
+        x: 1931
+        y: 161.14869835499704
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-20b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: f1b993c3-35ae-49a5-93de-3acfe507258d
+          role: system
+          text: ''
+        - id: 4e4e4e42-33bc-465f-a105-8e7a5fe9d29e
+          role: user
+          text: 'Medium confidence. Provide options.
+
+
+            Recommendation:{{#1772110380220.text#}}
+
+
+            Original input:{{#1772110367685.input_text#}}
+
+            Write output:
+
+            === ACCOUNTING CODE RECOMMENDATION ===
+
+            ⚠️ CONFIDENCE: MEDIUM — Review suggested
+
+
+            OPTION 1 (Most Likely): [code] - [name]
+
+            → [reason]
+
+
+            OPTION 2: [code] - [name]
+
+            → [reason]
+
+
+            CLARIFICATION NEEDED:
+
+            [question to resolve ambiguity]
+
+            ===
+
+            '
+        selected: false
+        title: medium
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17721104206720'
+      position:
+        x: 1940.4192577966132
+        y: 303
+      positionAbsolute:
+        x: 1940.4192577966132
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: openai/gpt-oss-20b
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 4afc743e-5d3f-428e-b176-04d75f1b4c71
+          role: system
+          text: ''
+        - id: 562c862e-b16f-43aa-9dbb-def0d08234ac
+          role: user
+          text: 'Low confidence. Manual review required.
+
+
+            Recommendation: {{#1772110380220.text#}}
+
+
+            Original input:
+
+            {{#1772110367685.input_text#}}
+
+
+            Write output:
+
+            === ACCOUNTING CODE RECOMMENDATION ===
+
+            🔴 LOW CONFIDENCE — MANUAL REVIEW REQUIRED
+
+
+            POSSIBLE CODES:
+
+            1. [code] - [name]: [reason]
+
+            2. [code] - [name]: [reason]
+
+
+            QUESTIONS TO ASK:
+
+            1. What is the unit price?
+
+            2. What is the primary purpose?
+
+
+            📞 Contact Finance: ext. 3333
+
+            ===
+
+            '
+        selected: false
+        title: low
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17721104219290'
+      position:
+        x: 1926
+        y: 443.79028077305605
+      positionAbsolute:
+        x: 1926
+        y: 443.79028077305605
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '17721104219290'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1772110413275'
+          - text
+          value_type: string
+          variable: text_1
+        - value_selector:
+          - '17721104206720'
+          - text
+          value_type: string
+          variable: text_2
+        - value_selector: []
+          variable: ''
+        selected: false
+        title: Output
+        type: end
+      height: 140
+      id: '1772110449610'
+      position:
+        x: 2337.225677062151
+        y: 296.4192577966132
+      positionAbsolute:
+        x: 2337.225677062151
+        y: 296.4192577966132
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -379.33910438551516
+      y: 274.7938233933164
+      zoom: 0.6241652744508057
+  rag_pipeline_variables: []
